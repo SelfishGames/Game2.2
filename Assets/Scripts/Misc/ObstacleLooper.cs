@@ -4,12 +4,11 @@ using System.Collections.Generic;
 public class ObstacleLooper : MonoBehaviour
 {
     #region Fields
-
     public GameManager gameManager;
 
     private float minHeight = -1f;
     private float maxHeight = 1f;
-
+    private int listLocation = -1;
     #endregion
 
 
@@ -17,13 +16,6 @@ public class ObstacleLooper : MonoBehaviour
     void Start()
     {
 
-        foreach (Transform obs in gameManager.obstacles)
-        {
-            Vector2 pos = obs.transform.position;
-            pos.y = Random.Range(minHeight, maxHeight);
-            obs.transform.position = pos;
-
-        }
     }
     #endregion 
 
@@ -31,19 +23,33 @@ public class ObstacleLooper : MonoBehaviour
     #region OnTriggerEnter
     void OnTriggerEnter2D(Collider2D collider)
     {
+
         Vector2 pos = collider.transform.position;
 
         // Logic to move the pipes based on their collider size.
-        if (collider.tag == "ObsGrey" || collider.tag == "ObsOrange")
+        if (collider.tag == "Obstacle")
         {
-            float widthOfObject = ((BoxCollider2D)collider).size.x;
 
+            collider.gameObject.SetActive(false);
+
+            gameManager.obstacleManager.liveObstacles.RemoveAt(0);
+            gameManager.obstacleManager.liveObstacles.Add(gameManager.obstacleCache.ChangeObstacle());
+
+            
+
+            //gameManager.obstacleManager.RandomObstacle(pos.x);
+
+            float widthOfObject = ((BoxCollider2D)collider).size.x;
+            //gameManager.obstacleCache.ChangeObstacle();
+
+            
             // Take the size of the collider and move it six times 
             // (Current number of obstacles).
             pos.y = Random.Range(minHeight, maxHeight);
             pos.x += widthOfObject * gameManager.obstacles.Count;
 
-            collider.transform.position = pos;
+            gameManager.obstacleManager.liveObstacles[5].transform.position = pos;
+            //collider.transform.position = pos;
         }
 
         // Floor panels need to be moved off of their object scale due to being 

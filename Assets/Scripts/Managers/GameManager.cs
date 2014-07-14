@@ -20,6 +20,7 @@ public class GameManager: MonoBehaviour
     public PointsManager pointsManager;
     public CamShake camShake;
     public ObstacleManager obstacleManager;
+    public ObstacleCache obstacleCache;
     #endregion 
 
     #region Start

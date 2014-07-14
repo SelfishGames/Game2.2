@@ -1,15 +1,36 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class ObstacleManager : MonoBehaviour
 {
     #region Fields
     public GameManager gameManager;
+    public List<GameObject> liveObstacles = new List<GameObject>();
 
+    private int totalLive = 6;
     private Transform selected;
     private Vector3 offset;
     private float minHeight = -1f;
     private float maxHeight = 1f;
+    private int startX;
+    #endregion
+
+    #region Awake
+    void Awake()
+    {
+        if (Application.loadedLevelName != "Tutorial")
+        {
+            gameManager.obstacleCache.GetObstacle(totalLive);
+
+            for (int i = 0; i < totalLive; i++)
+            {
+                startX = 3 * i + 9;
+
+                liveObstacles.Add(gameManager.obstacleCache.availableObstacles[i]);
+                liveObstacles[i].transform.position = new Vector2(startX, Random.RandomRange(minHeight, maxHeight));
+            }
+        }
+    }
     #endregion
 
     #region Update
@@ -26,7 +47,7 @@ public class ObstacleManager : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
 
-                    if (hit.collider.gameObject.tag == "ObsGrey" || hit.collider.gameObject.tag == "ObsOrange")
+                    if (hit.collider.gameObject.tag == "Obstacle")
                     {
                         //If an object has not been selected yet
                         if (!selected)
@@ -92,4 +113,10 @@ public class ObstacleManager : MonoBehaviour
     }
     #endregion
 
+    #region RandomObstacle
+    public void RandomObstacle(float xPos)
+    {
+
+    }
+    #endregion
 }
