@@ -13,21 +13,29 @@ public class ObstacleManager : MonoBehaviour
     private float minHeight = -1f;
     private float maxHeight = 1f;
     private int startX;
+    private int[] startRotation = {0,180};
     #endregion
 
     #region Awake
     void Awake()
     {
-        if (Application.loadedLevelName != "Tutorial")
+        
+
+        if (Application.loadedLevelName == "Level1")
         {
             gameManager.obstacleCache.GetObstacle(totalLive);
 
             for (int i = 0; i < totalLive; i++)
             {
+                int rand = Random.Range(0, 2);
                 startX = 3 * i + 9;
 
                 liveObstacles.Add(gameManager.obstacleCache.availableObstacles[i]);
                 liveObstacles[i].transform.position = new Vector2(startX, Random.RandomRange(minHeight, maxHeight));
+                liveObstacles[i].transform.rotation = new Quaternion(transform.rotation.x, startRotation[rand], 
+                    transform.rotation.z,transform.rotation.w);
+
+                Debug.Log(startRotation[rand]);
             }
         }
     }
@@ -40,7 +48,6 @@ public class ObstacleManager : MonoBehaviour
             Camera.main.ScreenToWorldPoint(Input.mousePosition),
             Vector2.zero, 0, 5 << LayerMask.NameToLayer("Obs"));
 
-     
             // If hit has found an object and player is not dead.
             if (hit && !gameManager.isDead)
             {
@@ -53,7 +60,6 @@ public class ObstacleManager : MonoBehaviour
                         if (!selected)
                         {
                             selected = hit.transform;
-
                             //Gets the offset of the selected obstacle and the mouse on screen in world space
                             offset = selected.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
                         }
@@ -69,7 +75,7 @@ public class ObstacleManager : MonoBehaviour
             {
                 //If hit is null
                 return;
-            }
+            }         
         
 
         if (selected)

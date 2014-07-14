@@ -13,7 +13,6 @@ public class PlayerManager: MonoBehaviour
     private GameObject playerObject;
     private float offset;
     private Vector3 currentVelocity;
-    private float randSeed;
     private Transform selected;
     private Vector3 targetLocation;
     
@@ -27,7 +26,6 @@ public class PlayerManager: MonoBehaviour
     {
         // Basic randomisation at beginning of each new game. (will need to be improved to randomise
         // mid game).
-        randSeed = Random.Range(200f, 400f);
         offset = Random.Range(-1f, 1f);
         while (offset == 0)
         {

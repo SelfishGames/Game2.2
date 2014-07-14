@@ -10,8 +10,6 @@ public class TutorialScript : MonoBehaviour
     public GameObject[] emmiters;
     public GameObject player;
 
-    private float t = 0;
-
     #endregion
 
 
@@ -48,7 +46,7 @@ public class TutorialScript : MonoBehaviour
             }
         }
 
-        if (transform.localPosition.x >= 11.8f)
+        if (transform.localPosition.x >= 11.65f)
         {
             hintMessage[1].SetActive(false);
             hintMessage[2].SetActive(true);

@@ -10,7 +10,6 @@ public class PointsManager : MonoBehaviour
     public GUIText GuiHighScore;
     public GameManager gameManager;
     
-    private float increasePointDelay;
     private int playerScore;
     private int highScore;
     private float timer;
@@ -39,7 +38,7 @@ public class PointsManager : MonoBehaviour
         if (gameManager.isDead == false)
         {
             timer += Time.deltaTime;
-            if (timer > increasePointDelay)
+            if (timer > 0)
             {
                 playerScore++;
                 timer = 0;

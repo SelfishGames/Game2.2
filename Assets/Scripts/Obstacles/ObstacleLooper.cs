@@ -8,7 +8,6 @@ public class ObstacleLooper : MonoBehaviour
 
     private float minHeight = -1f;
     private float maxHeight = 1f;
-    private int listLocation = -1;
     #endregion
 
 
@@ -18,7 +17,6 @@ public class ObstacleLooper : MonoBehaviour
 
     }
     #endregion 
-
 
     #region OnTriggerEnter
     void OnTriggerEnter2D(Collider2D collider)
