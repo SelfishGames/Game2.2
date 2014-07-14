@@ -14,7 +14,9 @@ public class PlayerManager: MonoBehaviour
     private float offset;
     private Vector3 currentVelocity;
     private float randSeed;
-    private Transform selected;
+
+    private float targetHeight;
+    private Vector3 targetOffset = new Vector3(5f, 0, 0);
     private Vector3 targetLocation;
     
 
@@ -27,25 +29,27 @@ public class PlayerManager: MonoBehaviour
     {
         // Basic randomisation at beginning of each new game. (will need to be improved to randomise
         // mid game).
-        randSeed = Random.Range(200f, 400f);
-        offset = Random.Range(-1f, 1f);
-        while (offset == 0)
-        {
-            offset = Random.Range(-1f, 1f);
-        }
+        //randSeed = Random.Range(200f, 400f);
+        //offset = Random.Range(-1f, 1f);
+        //while (offset == 0)
+        //{
+        //    offset = Random.Range(-1f, 1f);
+        //}
         playerObject = gameObject;
     }
 
     void Update()
     {
+        //Constantly moving the player along its local right vector
         transform.position += transform.right * speed * Time.deltaTime;
 
-        if (guideController.trailLocations.Count == 0)
-            return;
-
-        ///////////////// ------------ Andy Approach --------------- \\\\\\\\\\\\\\\\\\\\
-        //Sets the target location to the first one in the list
-        targetLocation = guideController.trailLocations[0];
+        //Everytime the player passes the target X, make a new one
+        if (transform.position.x > targetLocation.x)
+        {
+            targetHeight = Random.Range(-1.4f, 1.4f);
+            targetLocation = transform.position + targetOffset;
+            targetLocation.y = targetHeight;
+        }
 
         //Direction to the new target, gets the angle as a float, then converts
         //that into a quaternion to assign to the player transform
@@ -57,11 +61,11 @@ public class PlayerManager: MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime);
 
         //If the player square has not passed the current targets X position
-        if (transform.position.x > targetLocation.x)
-        {
-            //Removes the location when the player moves passed it
-            guideController.trailLocations.RemoveAt(0);
-        }
+        //if (transform.position.x > targetLocation.x)
+        //{
+        //    //Removes the location when the player moves passed it
+        //    guideController.trailLocations.RemoveAt(0);
+        //}
 
         //Locks the children (collider/sprite) to 45degrees rotation
         transform.GetChild(0).rotation = Quaternion.AngleAxis(45f, Vector3.forward);
