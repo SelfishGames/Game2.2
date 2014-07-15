@@ -30,11 +30,10 @@ public class ObstacleManager : MonoBehaviour
                 startX = 3 * i + 9;
 
                 liveObstacles.Add(gameManager.obstacleCache.availableObstacles[i]);
-                liveObstacles[i].transform.position = new Vector2(startX, Random.RandomRange(minHeight, maxHeight));
+                liveObstacles[i].transform.position = new Vector2(startX, Random.Range(minHeight, maxHeight));
                 liveObstacles[i].transform.rotation = new Quaternion(transform.rotation.x, startRotation[rand], 
                     transform.rotation.z,transform.rotation.w);
 
-                Debug.Log(startRotation[rand]);
             }
         }
     }

@@ -10,7 +10,6 @@ public class ObstacleCache : MonoBehaviour
     public List<GameObject> availableObstacles = new List<GameObject>();
 
     private int listLocation;
-    private int rand;
     #endregion 
 
     private void ShuffleList()
@@ -21,9 +20,7 @@ public class ObstacleCache : MonoBehaviour
             int randomLocal = Random.Range(0, availableObstacles.Count);
             availableObstacles[i] = availableObstacles[randomLocal];
             availableObstacles[randomLocal] = temp;
-
         }
-
     }
 
     public GameObject GetObstacle(int liveOBstacles)
@@ -34,13 +31,10 @@ public class ObstacleCache : MonoBehaviour
         int x = 0;
         for (; x < liveOBstacles; x++)
         {
-            rand = Random.Range(0, availableObstacles.Count);
-
             if (availableObstacles[x].gameObject.activeSelf == false)
             {
                 availableObstacles[x].gameObject.SetActive(true);
             }
-           
         }
         return availableObstacles[x];
     }

@@ -28,8 +28,14 @@ public class TutorialScript : MonoBehaviour
         {
             // Pause the player and each particle system.
             StopStartPlayer(0, 0);
-            // Display the first hint message. 
+            // Display the first hint message.
+#if UNITY_ANDROID
             hintMessage[0].SetActive(true);
+#endif
+
+#if UNITY_WEBPLAYER
+            hintMessage[3].SetActive(true);
+#endif
             // Allow the player to move the obstacles.
             gameManager.isDead = false;
 
@@ -42,6 +48,7 @@ public class TutorialScript : MonoBehaviour
                 gameManager.isDead = true;
                 // Remove first message.
                 hintMessage[0].SetActive(false);
+                hintMessage[3].SetActive(false);
                 hintMessage[1].SetActive(true);
             }
         }
