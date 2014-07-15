@@ -79,22 +79,6 @@ public class ObstacleManager : MonoBehaviour
         if (selected)
         {
             DragObstacle();
-
-            ////Gets all obstacles with the same tag as the one that has been selected
-            ////and also only if they are visible on the screen
-            //var selectedArray = from obs in gameManager.obstacles
-            //                    where (obs.tag == selected.tag) && obs.renderer.isVisible == true
-            //                    select obs.transform;
-
-            //foreach(Transform trans in selectedArray)
-            //{
-            //    //Temp Vector3 to set the object with only the modified Y value, so that it doesnt move on the X
-            //    Vector3 dragPos = trans.position;
-            //    dragPos.y = y;
-            //    dragPos.y = Mathf.Clamp(dragPos.y, minHeight, maxHeight);
-
-            //    trans.position = dragPos;
-            //}  
         }
     }
     #endregion
