@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 55ab70540d0f5bf4095c8140a36abfcc
+guid: 1e9d214f183b8ac48aa25ab44c677f8d
 TextureImporter:
   fileIDToRecycleName:
-    21300000: PlayGame
+    21300000: AvoidObsacles
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
