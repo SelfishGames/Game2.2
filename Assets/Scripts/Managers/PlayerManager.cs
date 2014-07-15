@@ -13,21 +13,11 @@ public class PlayerManager: MonoBehaviour
     private GameObject playerObject;
     private float offset;
     private Vector3 currentVelocity;
-<<<<<<< HEAD
-
-    private Transform selected;
-
-    private float randSeed;
 
     private float targetHeight;
     private Vector3 targetOffset = new Vector3(5f, 0, 0);
-=======
     private Transform selected;
     private float randSeed;
-
-    private float targetHeight;
-    private Vector3 targetOffset = new Vector3(8f, 0, 0);
->>>>>>> origin/master
     private Vector3 targetLocation;
     
     // Make private after testing.
@@ -38,26 +28,19 @@ public class PlayerManager: MonoBehaviour
     void Start()
     {
         // Basic randomisation at beginning of each new game. (will need to be improved to randomise
-<<<<<<< HEAD
         // mid game).
         offset = Random.Range(-1f, 1f);
         while (offset == 0)
         {
             offset = Random.Range(-1f, 1f);
         }
-=======
         // mid game
->>>>>>> origin/master
         //randSeed = Random.Range(200f, 400f);
         //offset = Random.Range(-1f, 1f);
         //while (offset == 0)
         //{
         //    offset = Random.Range(-1f, 1f);
         //}
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
         playerObject = gameObject;
     }
 

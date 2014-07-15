@@ -20,7 +20,6 @@ public class ObstacleManager : MonoBehaviour
     void Awake()
     {
         
-
         if (Application.loadedLevelName == "Level1")
         {
             gameManager.obstacleCache.GetObstacle(totalLive);

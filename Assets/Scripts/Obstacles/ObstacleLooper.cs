@@ -32,9 +32,7 @@ public class ObstacleLooper : MonoBehaviour
 
             gameManager.obstacleManager.liveObstacles.RemoveAt(0);
             gameManager.obstacleManager.liveObstacles.Add(gameManager.obstacleCache.ChangeObstacle());
-
             
-
             //gameManager.obstacleManager.RandomObstacle(pos.x);
 
             float widthOfObject = ((BoxCollider2D)collider).size.x;
