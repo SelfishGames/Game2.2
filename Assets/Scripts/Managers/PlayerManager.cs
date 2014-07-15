@@ -64,8 +64,11 @@ public class PlayerManager: MonoBehaviour
         gameManager.audioManager.PlaySound();
         // Call for camera shake.
         gameManager.camShake.Shake(intensity, time, decrease);
+
+#if UNITY_ANDROID
         // Make device vibrate.
         Handheld.Vibrate();
+#endif
         // Display explosion.
         gameManager.TriggerCollision();
         // Display buttons to allow restart or quit.
