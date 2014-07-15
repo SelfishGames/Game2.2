@@ -7,7 +7,6 @@ public class PlayerManager: MonoBehaviour
     public GameManager gameManager;
     public float speed;
     public float rotSpeed;
-    public GuideController guideController;
 
     // Local variable.
     private GameObject playerObject;
