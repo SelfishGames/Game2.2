@@ -5,7 +5,9 @@ public class AudioManager: MonoBehaviour
 {
 
     #region Fields 
+    public Slider slider;
     public AudioClip collision;
+    public GameObject[] sliders;
     
     #endregion 
 
@@ -23,6 +25,6 @@ public class AudioManager: MonoBehaviour
 
     void Update()
     {
-
+        audio.volume = slider.GetSliderValue();
     }
 }

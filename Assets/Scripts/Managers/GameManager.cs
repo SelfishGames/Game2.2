@@ -12,6 +12,7 @@ public class GameManager: MonoBehaviour
     public bool isDead = false;
     [HideInInspector]
     public int playCount = 0;
+    public GameObject gameTitle;
 
     // Objects for each of the manager classes
     public ButtonManager buttonManager;
@@ -21,6 +22,7 @@ public class GameManager: MonoBehaviour
     public CamShake camShake;
     public ObstacleManager obstacleManager;
     public ObstacleCache obstacleCache;
+    
     #endregion 
 
     #region Start

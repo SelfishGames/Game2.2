@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ButtonOptions: MonoBehaviour
+public class ButtonBack: MonoBehaviour
 {
     #region Fields
     public GameManager gameManager;
@@ -20,7 +20,7 @@ public class ButtonOptions: MonoBehaviour
     #region OnMouseUp
     void OnMouseUp()
     {
-        gameManager.buttonManager.Options();
+        gameManager.buttonManager.Back();
         guiTexture.texture = defaultTexture;
     }
     #endregion

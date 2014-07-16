@@ -14,7 +14,7 @@ public class PlayerManager: MonoBehaviour
     private float targetHeight;
     private float minHeight = -0.7f,
         maxHeight = 0.7f;
-    private Vector3 targetOffset = new Vector3(8f, 0, 0);
+    private Vector3 targetOffset = new Vector3(7f, 0, 0);
     private Vector3 targetLocation;
     
     // Make private after testing.
