@@ -16,13 +16,13 @@ public class ButtonManager : MonoBehaviour
         if (Time.timeScale == 1)
         {
             Time.timeScale = 0;
-            ActivateButtons();
+            buttons[1].SetActive(true);
         }
 
         else
         {
             Time.timeScale = 1;
-            DeactivateButtons();
+            buttons[1].SetActive(false);
         }
     }
 
@@ -53,44 +53,50 @@ public class ButtonManager : MonoBehaviour
     public void Options()
     {
         buttons[0].SetActive(false);
-        buttons[3].SetActive(true);
+        buttons[2].SetActive(false);
+        if (Application.loadedLevelName == "MainMenu")
+        {
+            buttons[3].SetActive(true);
+        }        
 
-        gameManager.gameTitle.SetActive(false);
-        
+        buttons[1].transform.position = buttons[2].transform.position;
+        if (Application.loadedLevelName == "MainMenu")
+        {
+            gameManager.gameTitle.SetActive(false);
+        }
         for(int i = 0; i < 2; i++)
         {
             gameManager.audioManager.sliders[i].SetActive(true);
-        }        
+        }
+
+        gameManager.visibleSlider = true;
     }
 
     public void Back()
     {
         buttons[3].SetActive(false);
+        buttons[2].SetActive(true);
         buttons[0].SetActive(true);
-        
+
+        buttons[1].transform.position = new Vector2(0.6f, buttons[1].transform.position.y);
         gameManager.gameTitle.SetActive(true);
 
         for (int i = 0; i < 2; i++)
         {
             gameManager.audioManager.sliders[i].SetActive(false);
-        }        
+        }
+        gameManager.visibleSlider = false;
     }
 
     public void ActivateButtons()
     {
-        // Get all buttons in the list - 1 to ignore the pause button.
-        for (int i = 0; i < buttons.Count - 1; i++)
-        {
-            buttons[i].SetActive(true);
-        }
+        buttons[0].SetActive(true);
+        buttons[1].SetActive(true);
     }
 
     public void DeactivateButtons()
     {
-        // Get all buttons in the list - 1 to ignore the pause button.
-        for (int i = 0; i < buttons.Count - 1; i++)
-        {
-            buttons[i].SetActive(false);
-        }
+        buttons[0].SetActive(false);
+        buttons[1].SetActive(false);
     }
 }

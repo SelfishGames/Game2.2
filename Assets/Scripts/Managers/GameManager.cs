@@ -11,6 +11,8 @@ public class GameManager: MonoBehaviour
     [HideInInspector]
     public bool isDead = false;
     [HideInInspector]
+    public bool visibleSlider = false;
+    [HideInInspector]
     public int playCount = 0;
     public GameObject gameTitle;
 
