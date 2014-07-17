@@ -7,8 +7,10 @@ public class PointsManager : MonoBehaviour
     //Placeholder
     public Transform player;
     public GUIText GUIScore;
-    public GUIText GuiHighScore;
+    public GUIText playerScoreEnd;
+    public GUIText highScoreEnd;
     public GameManager gameManager;
+    public GameObject highScoreDisplay;
     
     private int playerScore;
     private int highScore;
@@ -51,7 +53,8 @@ public class PointsManager : MonoBehaviour
             }
 
             GUIScore.text = ("Score: " + playerScore.ToString());
-            GuiHighScore.text = ("High Score " + highScore.ToString());
+            playerScoreEnd.text = ("Your Score: " + playerScore.ToString());
+            highScoreEnd.text = ("High Score: " + highScore.ToString());
         }
     }
 }
