@@ -10,8 +10,8 @@ public class ObstacleManager : MonoBehaviour
     private int totalLive = 6;
     private Transform selected;
     private Vector3 offset;
-    private float minHeight = -1f;
-    private float maxHeight = 1f;
+    private float minHeight = -1f,
+        maxHeight = 1f;
     private int startX;
     private int[] startRotation = {0,180};
     #endregion
@@ -19,7 +19,7 @@ public class ObstacleManager : MonoBehaviour
     #region Awake
     void Awake()
     {
-        
+        //Sets the position and rotation of the obstacles that will first spawn
         if (Application.loadedLevelName == "Level1")
         {
             gameManager.obstacleCache.GetObstacle(totalLive);
@@ -33,7 +33,6 @@ public class ObstacleManager : MonoBehaviour
                 liveObstacles[i].transform.position = new Vector2(startX, Random.Range(minHeight, maxHeight));
                 liveObstacles[i].transform.rotation = new Quaternion(transform.rotation.x, startRotation[rand], 
                     transform.rotation.z,transform.rotation.w);
-
             }
         }
     }
@@ -42,6 +41,7 @@ public class ObstacleManager : MonoBehaviour
     #region Update
     void Update()
     {
+        //Constantly shoots a raycast at the mouse/touch position
         RaycastHit2D hit = Physics2D.Raycast(
             Camera.main.ScreenToWorldPoint(Input.mousePosition),
             Vector2.zero, 0, 5 << LayerMask.NameToLayer("Obs"));
@@ -51,7 +51,6 @@ public class ObstacleManager : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-
                     if (hit.collider.gameObject.tag == "Obstacle")
                     {
                         //If an object has not been selected yet
@@ -65,21 +64,17 @@ public class ObstacleManager : MonoBehaviour
                 }
                 //Once the user lets go of mouseClick, reset selected to null
                 else if (Input.GetMouseButtonUp(0))
-                {
                     selected = null;
-                }
             }
             else
             {
                 //If hit is null
                 return;
             }         
-        
 
+        //If an obstacles is selected, move it
         if (selected)
-        {
             DragObstacle();
-        }
     }
     #endregion
 
@@ -98,13 +93,6 @@ public class ObstacleManager : MonoBehaviour
         dragPos.y = Mathf.Clamp(dragPos.y, minHeight, maxHeight);
 
         selected.position = dragPos;
-    }
-    #endregion
-
-    #region RandomObstacle
-    public void RandomObstacle(float xPos)
-    {
-
     }
     #endregion
 }

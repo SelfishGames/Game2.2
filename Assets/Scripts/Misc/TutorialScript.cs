@@ -7,11 +7,9 @@ public class TutorialScript : MonoBehaviour
     public Transform targetObstacle;
     public GameObject[] hintMessage;
     public GameManager gameManager;
-    public GameObject[] emmiters;
+    public GameObject[] emitters;
     public GameObject player;
-
     #endregion
-
 
     #region Start
     void Start()
@@ -65,9 +63,9 @@ public class TutorialScript : MonoBehaviour
     #region StopStartPlayer
     void StopStartPlayer(int player, int emitter)
     {
-        // Alter speed of player and emmiter rate.
+        // Alter speed of player and emitter rate.
         gameManager.playerManager.speed = player;
-        foreach (GameObject emit in emmiters)
+        foreach (GameObject emit in emitters)
         {
             emit.particleSystem.playbackSpeed = emitter;
         }

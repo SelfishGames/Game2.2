@@ -37,14 +37,7 @@ public class MoveSlider: MonoBehaviour
             currentValue = (((currentX - sliderBar.pixelInset.xMin) / (sliderBar.pixelInset.xMax - sliderBar.pixelInset.xMin)) * (maxValue - minValue)) + minValue;
         }
         // make sure the value isn't out of bounds
-        if (currentValue < minValue)
-        {
-            currentValue = minValue;
-        }
-        else if (currentValue > maxValue)
-        {
-            currentValue = maxValue;
-        }
+        currentValue = Mathf.Clamp(currentValue, minValue, maxValue);
         // update where the sliderWidget is drawn from currentValue (in case the value is changed externally)
         currentX = (((currentValue - minValue) / (maxValue - minValue)) * (sliderBar.pixelInset.xMax - sliderBar.pixelInset.xMin)) + sliderBar.pixelInset.xMin;
         sliderWidget.pixelInset = new Rect((currentX - halfWidgetWidth), sliderWidget.pixelInset.yMin, (currentX + halfWidgetWidth) - (currentX - halfWidgetWidth), sliderWidget.pixelInset.yMax - sliderWidget.pixelInset.yMin);

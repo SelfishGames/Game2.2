@@ -5,17 +5,19 @@ public class PlayerManager: MonoBehaviour
 {
     #region Fields
     public GameManager gameManager;
-    public float speed;
-    public float rotSpeed;
+    public float speed = 3f;
 
     // Local variable.
     private GameObject playerObject;
 
-    private float targetHeight;
     private float minHeight = -0.7f,
         maxHeight = 0.7f;
+    private float targetHeight;
     private Vector3 targetOffset = new Vector3(7f, 0, 0);
     private Vector3 targetLocation;
+ 
+    //rotSpeed is how fast it rotates
+    private float rotSpeed = 0.8f;
     
     // Make private after testing.
     public float intensity, time;
@@ -38,6 +40,8 @@ public class PlayerManager: MonoBehaviour
         //Everytime the player passes the target X, make a new one
         if (transform.position.x > targetLocation.x)
         {
+            //Picks a random height, offsets the target from the players
+            //current position and then assigns the Y-value
             targetHeight = Random.Range(minHeight, maxHeight);
             targetLocation = transform.position + targetOffset;
             targetLocation.y = targetHeight;
