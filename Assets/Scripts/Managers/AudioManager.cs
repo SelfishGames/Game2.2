@@ -15,13 +15,18 @@ public class AudioManager : MonoBehaviour
     #region Awake
     void Awake()
     {
+        // Sound.
         audioFiles[0].volume = PlayerPrefs.GetFloat("Sound", 1);
+        audioFiles[2].volume = PlayerPrefs.GetFloat("ClickDown", 1);
+        audioFiles[3].volume = PlayerPrefs.GetFloat("ClickUp", 1);
+        // Music.
         audioFiles[1].volume = PlayerPrefs.GetFloat("Music", 1);
     }
     #endregion
 
     public void PlaySound()
     {
+        // Play explosion when called by player.
         audioFiles[0].Play();
     }
 
@@ -29,7 +34,11 @@ public class AudioManager : MonoBehaviour
     {
         if (gameManager.visibleSlider == true)
         {
+            // Sound.
             audioFiles[0].volume = sliderSound.GetSliderValue();
+            audioFiles[2].volume = sliderSound.GetSliderValue();
+            audioFiles[3].volume = sliderSound.GetSliderValue();
+            // Music.
             audioFiles[1].volume = sliderMusic.GetSliderValue();
 
         }

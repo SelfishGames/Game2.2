@@ -21,12 +21,14 @@ public class ButtonManager : MonoBehaviour
         if (Time.timeScale == 1)
         {
             Time.timeScale = 0;
+            gameManager.isDead = true;
             buttons[1].SetActive(true);
             buttons[5].SetActive(true);
         }
 
         else
         {
+            gameManager.isDead = false;
             Time.timeScale = 1;
             buttons[1].SetActive(false);
             buttons[5].SetActive(false);
@@ -115,6 +117,8 @@ public class ButtonManager : MonoBehaviour
         //Sets the playerprefs for the volume and slider knob positions 
         //when the options menu is exited
         PlayerPrefs.SetFloat("Sound", gameManager.audioManager.audioFiles[0].volume);
+        PlayerPrefs.SetFloat("ClickDown", gameManager.audioManager.audioFiles[2].volume);
+        PlayerPrefs.SetFloat("ClickUp", gameManager.audioManager.audioFiles[3].volume);
         PlayerPrefs.SetFloat("Music", gameManager.audioManager.audioFiles[1].volume);
 
         PlayerPrefs.SetFloat("musicKnobX", gameManager.audioManager.sliderMusic.knob.position.x);
