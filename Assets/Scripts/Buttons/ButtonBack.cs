@@ -13,7 +13,7 @@ public class ButtonBack: MonoBehaviour
     void OnMouseDown()
     {
         guiTexture.texture = pressedTexture;
-
+        gameManager.audioManager.audioFiles[2].Play();
     }
     #endregion
 
@@ -21,6 +21,7 @@ public class ButtonBack: MonoBehaviour
     void OnMouseUp()
     {
         gameManager.buttonManager.Back();
+        gameManager.audioManager.audioFiles[3].Play();
         guiTexture.texture = defaultTexture;
     }
     #endregion

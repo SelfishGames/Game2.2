@@ -13,14 +13,25 @@ public class ButtonPlay : MonoBehaviour
     void OnMouseDown()
     {
         guiTexture.texture = pressedTexture;
+        gameManager.audioManager.audioFiles[2].Play();
     }
     #endregion
 
     #region OnMouseUp
     void OnMouseUp()
     {
+        gameManager.audioManager.audioFiles[3].Play();
         guiTexture.texture = defaultTexture;
-        if(gameManager.playCount == 0)
+
+        StartCoroutine("CallPlay");
+
+    }
+    #endregion
+
+    IEnumerator CallPlay()
+    {
+        yield return new WaitForSeconds(.2f);
+        if (gameManager.playCount == 0)
         {
             gameManager.buttonManager.Play(1);
         }
@@ -29,5 +40,4 @@ public class ButtonPlay : MonoBehaviour
             gameManager.buttonManager.Play(2);
         }
     }
-    #endregion
 }
