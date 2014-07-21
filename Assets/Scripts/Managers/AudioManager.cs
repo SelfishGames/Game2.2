@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class AudioManager: MonoBehaviour
+public class AudioManager : MonoBehaviour
 {
 
-    #region Fields 
+    #region Fields
     public SliderSound sliderSound;
     public SliderMusic sliderMusic;
     public List<AudioSource> audioFiles = new List<AudioSource>();
     public GameManager gameManager;
-    public GameObject[] sliders;  
-    #endregion 
+    public GameObject[] sliders;
+    #endregion
 
     #region Awake
     void Awake()
@@ -27,7 +27,7 @@ public class AudioManager: MonoBehaviour
 
     void Update()
     {
-        if(gameManager.visibleSlider == true)
+        if (gameManager.visibleSlider == true)
         {
             audioFiles[0].volume = sliderSound.GetSliderValue();
             audioFiles[1].volume = sliderMusic.GetSliderValue();
@@ -37,12 +37,6 @@ public class AudioManager: MonoBehaviour
 
     void OnDestroy()
     {
-        // Store volume choices.
-        //PlayerPrefs.SetFloat("Sound", audioFiles[0].volume);
-        //PlayerPrefs.SetFloat("Music", audioFiles[1].volume);
 
-        //PlayerPrefs.SetFloat("musicKnobX", sliderMusic.knob.position.x);
-        //PlayerPrefs.SetFloat("soundKnobX", sliderSound.knob.position.x);
-        //Debug.Log("AudioManager onDestroy");
     }
 }

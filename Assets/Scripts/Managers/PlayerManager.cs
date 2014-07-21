@@ -77,8 +77,7 @@ public class PlayerManager: MonoBehaviour
         gameManager.TriggerCollision();
         // Display buttons to allow restart or quit.
         gameManager.buttonManager.ActivateButtons();
-        // Remove the option to pause. 
-        gameManager.buttonManager.buttons[2].SetActive(false);
+        
         // Make GameManager know the player is dead.
         gameManager.isDead = true;
         if (Application.loadedLevelName == "Level1")
@@ -86,6 +85,9 @@ public class PlayerManager: MonoBehaviour
             gameManager.pointsManager.playerScoreEnd.gameObject.SetActive(true);
             gameManager.pointsManager.highScoreEnd.gameObject.SetActive(true);
             gameManager.pointsManager.highScoreDisplay.SetActive(true);
+            // Remove the option to pause. 
+            gameManager.buttonManager.buttons[4].SetActive(false);
+            gameManager.buttonManager.buttons[5].SetActive(true);
         }
         playerObject.SetActive(false);
     }
