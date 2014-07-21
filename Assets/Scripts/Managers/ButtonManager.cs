@@ -23,7 +23,7 @@ public class ButtonManager : MonoBehaviour
             Time.timeScale = 0;
             gameManager.isDead = true;
             buttons[1].SetActive(true);
-            buttons[5].SetActive(true);
+            buttons[2].SetActive(true);
         }
 
         else
@@ -31,23 +31,7 @@ public class ButtonManager : MonoBehaviour
             gameManager.isDead = false;
             Time.timeScale = 1;
             buttons[1].SetActive(false);
-            buttons[5].SetActive(false);
-        }
-    }
-    #endregion
-
-    #region Resume
-    public void Resume()
-    {
-        if (gameManager.isDead == true)
-        {
-            Application.LoadLevel(Application.loadedLevel);
-        }
-
-        else
-        {
-            Time.timeScale = 1;
-            DeactivateButtons();
+            buttons[2].SetActive(false);
         }
     }
     #endregion
@@ -69,18 +53,21 @@ public class ButtonManager : MonoBehaviour
     #region Options
     public void Options()
     {
-        buttons[0].SetActive(false);
+        // Hide play button.
+        buttons[4].SetActive(false);
+        // Hide quit button.
         buttons[2].SetActive(false);
-        if (Application.loadedLevelName == "MainMenu")
-        {
-            buttons[3].SetActive(true);
-        }
-
-        buttons[1].transform.position = buttons[2].transform.position;
-        if (Application.loadedLevelName == "MainMenu")
-        {
-            gameManager.gameTitle.SetActive(false);
-        }
+        // Hide option button.
+        buttons[3].SetActive(false);
+        // Show Back Button.
+        buttons[6].SetActive(true);
+        // Reposition quit button.
+        buttons[2].transform.position = buttons[3].transform.position;
+        // Show quit button.
+        buttons[2].SetActive(true);
+       
+        gameManager.gameTitle.SetActive(false);
+        
         for (int i = 0; i < 2; i++)
         {
             gameManager.audioManager.sliders[i].SetActive(true);
@@ -101,11 +88,14 @@ public class ButtonManager : MonoBehaviour
     #region Back
     public void Back()
     {
-        buttons[3].SetActive(false);
-        buttons[2].SetActive(true);
-        buttons[0].SetActive(true);
-
-        buttons[1].transform.position = new Vector2(0.6f, buttons[1].transform.position.y);
+        // Hide back.
+        buttons[6].SetActive(false);
+        // Show play.
+        buttons[4].SetActive(true);
+        // Show settings.
+        buttons[3].SetActive(true);
+        // Reset quit location.
+        buttons[2].transform.position = new Vector2(0.6f, buttons[2].transform.position.y);
         gameManager.gameTitle.SetActive(true);
 
         for (int i = 0; i < 2; i++)
@@ -123,20 +113,6 @@ public class ButtonManager : MonoBehaviour
 
         PlayerPrefs.SetFloat("musicKnobX", gameManager.audioManager.sliderMusic.knob.position.x);
         PlayerPrefs.SetFloat("soundKnobX", gameManager.audioManager.sliderSound.knob.position.x);
-    }
-    #endregion
-
-    #region ActivateButtons
-    public void ActivateButtons()
-    {
-        buttons[0].SetActive(true);
-        buttons[1].SetActive(true);
-    }
-
-    public void DeactivateButtons()
-    {
-        buttons[0].SetActive(false);
-        buttons[1].SetActive(false);
     }
     #endregion
 
