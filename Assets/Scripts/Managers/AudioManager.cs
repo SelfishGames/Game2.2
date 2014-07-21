@@ -38,10 +38,11 @@ public class AudioManager: MonoBehaviour
     void OnDestroy()
     {
         // Store volume choices.
-        PlayerPrefs.SetFloat("Sound", audioFiles[0].volume);
-        PlayerPrefs.SetFloat("Music", audioFiles[1].volume);
+        //PlayerPrefs.SetFloat("Sound", audioFiles[0].volume);
+        //PlayerPrefs.SetFloat("Music", audioFiles[1].volume);
 
-        PlayerPrefs.SetFloat("musicKnobX", sliderMusic.knob.position.x);
-        PlayerPrefs.SetFloat("soundKnobX", sliderSound.knob.position.x);
+        //PlayerPrefs.SetFloat("musicKnobX", sliderMusic.knob.position.x);
+        //PlayerPrefs.SetFloat("soundKnobX", sliderSound.knob.position.x);
+        //Debug.Log("AudioManager onDestroy");
     }
 }

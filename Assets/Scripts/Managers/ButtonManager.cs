@@ -9,16 +9,12 @@ public class ButtonManager : MonoBehaviour
 
     #endregion
 
-<<<<<<< HEAD
     void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
-        
     }
 
     #region Pause
-=======
->>>>>>> origin/master
     public void Pause()
     {
         if (Time.timeScale == 1)
@@ -99,6 +95,14 @@ public class ButtonManager : MonoBehaviour
             gameManager.audioManager.sliders[i].SetActive(false);
         }
         gameManager.visibleSlider = false;
+
+        //Sets the playerprefs for the volume and slider knob positions 
+        //when the options menu is exited
+        PlayerPrefs.SetFloat("Sound", gameManager.audioManager.audioFiles[0].volume);
+        PlayerPrefs.SetFloat("Music", gameManager.audioManager.audioFiles[1].volume);
+
+        PlayerPrefs.SetFloat("musicKnobX", gameManager.audioManager.sliderMusic.knob.position.x);
+        PlayerPrefs.SetFloat("soundKnobX", gameManager.audioManager.sliderSound.knob.position.x);
     }
     #endregion
 
