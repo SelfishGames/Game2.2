@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class ButtonManager : MonoBehaviour
 {
@@ -9,30 +10,22 @@ public class ButtonManager : MonoBehaviour
 
     #endregion
 
-<<<<<<< HEAD
-    void Awake()
-    {
-        DontDestroyOnLoad(transform.gameObject);
-        
-    }
-
     #region Pause
-=======
->>>>>>> origin/master
+
     public void Pause()
     {
         if (Time.timeScale == 1)
         {
             Time.timeScale = 0;
             buttons[1].SetActive(true);
-            buttons[2].SetActive(true);
+            buttons[5].SetActive(true);
         }
 
         else
         {
             Time.timeScale = 1;
             buttons[1].SetActive(false);
-            buttons[2].SetActive(false);
+            buttons[5].SetActive(false);
         }
     }
     #endregion
@@ -70,17 +63,32 @@ public class ButtonManager : MonoBehaviour
     #region Options
     public void Options()
     {
+        buttons[0].SetActive(false);
+        buttons[2].SetActive(false);
         if (Application.loadedLevelName == "MainMenu")
         {
-            EnterOptions();
+            buttons[3].SetActive(true);
         }
 
-        else
+        buttons[1].transform.position = buttons[2].transform.position;
+        if (Application.loadedLevelName == "MainMenu")
         {
-            Time.timeScale = 1;
-            Application.LoadLevel(0);
-            EnterOptions();        
-        }        
+            gameManager.gameTitle.SetActive(false);
+        }
+        for (int i = 0; i < 2; i++)
+        {
+            gameManager.audioManager.sliders[i].SetActive(true);
+        }
+
+        gameManager.visibleSlider = true;
+    }
+    #endregion
+
+    #region ButtonHome
+    public void ButtonHome()
+    {
+        StartCoroutine("GoToMenu");
+        Time.timeScale = 1;
     }
     #endregion
 
@@ -116,28 +124,13 @@ public class ButtonManager : MonoBehaviour
     }
     #endregion
 
-    #region EnterOptions
-    void EnterOptions()
+    #region GoToMenu
+    IEnumerator GoToMenu()
     {
-        buttons[0].SetActive(false);
-        buttons[2].SetActive(false);
-        if (Application.loadedLevelName == "MainMenu")
-        {
-            buttons[3].SetActive(true);
-        }
+        yield return new WaitForSeconds(0.1f);
 
-        buttons[1].transform.position = buttons[2].transform.position;
-        if (Application.loadedLevelName == "MainMenu")
-        {
-            gameManager.gameTitle.SetActive(false);
-        }
-        for (int i = 0; i < 2; i++)
-        {
-            gameManager.audioManager.sliders[i].SetActive(true);
-        }
-
-        gameManager.visibleSlider = true;
-
+        Application.LoadLevel(0);
     }
-    #endregion 
+
+    #endregion
 }
