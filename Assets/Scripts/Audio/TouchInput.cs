@@ -22,11 +22,8 @@ public class TouchInput : MonoBehaviour
     #region Update
     void Update()
     {
-
-
         if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(0) || Input.GetMouseButtonUp(0))
         {
-
             oldTouch = new GameObject[touchList.Count];
             touchList.CopyTo(oldTouch);
             touchList.Clear();

@@ -9,16 +9,16 @@ public class AudioManager: MonoBehaviour
     public SliderMusic sliderMusic;
     public List<AudioSource> audioFiles = new List<AudioSource>();
     public GameManager gameManager;
-    public GameObject[] sliders;
-    
+    public GameObject[] sliders;  
     #endregion 
 
-
+    #region Awake
     void Awake()
     {
         audioFiles[0].volume = PlayerPrefs.GetFloat("Sound", 1);
         audioFiles[1].volume = PlayerPrefs.GetFloat("Music", 1);
     }
+    #endregion
 
     public void PlaySound()
     {
@@ -40,5 +40,8 @@ public class AudioManager: MonoBehaviour
         // Store volume choices.
         PlayerPrefs.SetFloat("Sound", audioFiles[0].volume);
         PlayerPrefs.SetFloat("Music", audioFiles[1].volume);
+
+        PlayerPrefs.SetFloat("musicKnobX", sliderMusic.knob.position.x);
+        PlayerPrefs.SetFloat("soundKnobX", sliderSound.knob.position.x);
     }
 }

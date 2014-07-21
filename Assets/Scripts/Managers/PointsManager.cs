@@ -17,7 +17,6 @@ public class PointsManager : MonoBehaviour
     private float timer;
     #endregion
 
-
     #region Start
     void Start()
     {
@@ -34,11 +33,13 @@ public class PointsManager : MonoBehaviour
     }
     #endregion 
 
-    // Update is called once per frame
+    #region FixedUpdate
     void FixedUpdate()
     {
+        //If the game is still running
         if (gameManager.isDead == false)
         {
+            //Increases the score
             timer += Time.deltaTime;
             if (timer > 0)
             {
@@ -52,9 +53,11 @@ public class PointsManager : MonoBehaviour
                 highScore = playerScore;
             }
 
+            //Sets the score display text
             GUIScore.text = ("Score: " + playerScore.ToString());
             playerScoreEnd.text = ("Your Score: " + playerScore.ToString());
             highScoreEnd.text = ("High Score: " + highScore.ToString());
         }
+    #endregion
     }
 }

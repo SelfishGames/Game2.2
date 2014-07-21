@@ -37,11 +37,13 @@ public class GameManager: MonoBehaviour
     #region Update 
     void Update()
     {
+        //Quit the game
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
 
+        //Sets the game orientation based on the phone orientation
         if (Input.deviceOrientation == DeviceOrientation.LandscapeLeft)
             Screen.orientation = ScreenOrientation.LandscapeLeft;
         else if (Input.deviceOrientation == DeviceOrientation.LandscapeRight)

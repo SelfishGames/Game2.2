@@ -10,7 +10,6 @@ public class ButtonManager : MonoBehaviour
 
     #endregion
 
-
     public void Pause()
     {
         if (Time.timeScale == 1)

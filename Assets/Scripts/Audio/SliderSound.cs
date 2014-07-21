@@ -17,12 +17,18 @@ public class SliderSound: MonoBehaviour
     private float displayValue;
     #endregion
 
+    void Awake()
+    {
+        targetPos = knob.position;
+        targetPos.x = PlayerPrefs.GetFloat("soundKnobX");
+        knob.position = targetPos;
+    }
+
     #region Start
     void Start()
     {
         targetPos = knob.position;
         sliderLength = GetComponent<BoxCollider>().size.x - .4f;
-
     }
     #endregion
 
