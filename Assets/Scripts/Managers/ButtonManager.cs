@@ -9,6 +9,7 @@ public class ButtonManager : MonoBehaviour
 
     #endregion
 
+<<<<<<< HEAD
     void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
@@ -16,6 +17,8 @@ public class ButtonManager : MonoBehaviour
     }
 
     #region Pause
+=======
+>>>>>>> origin/master
     public void Pause()
     {
         if (Time.timeScale == 1)
