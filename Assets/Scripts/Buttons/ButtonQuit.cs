@@ -12,7 +12,7 @@ public class ButtonQuit : MonoBehaviour
     #region OnMouseDown
     void OnMouseDown()
     {
-        gameManager.audioManager.audioFiles[2].Play();
+        gameManager.audioManager.audioFiles[1].Play();
         guiTexture.texture = pressedTexture;
     }
     #endregion
@@ -21,7 +21,7 @@ public class ButtonQuit : MonoBehaviour
     void OnMouseUp()
     {
         guiTexture.texture = defaultTexture;
-        gameManager.audioManager.audioFiles[3].Play();
+        gameManager.audioManager.audioFiles[2].Play();
         gameManager.buttonManager.Quit();
     }
     #endregion

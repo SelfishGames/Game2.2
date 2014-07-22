@@ -13,7 +13,7 @@ public class ButtonPause : MonoBehaviour
     void OnMouseDown()
     {
         guiTexture.texture = pressedTexture;
-        gameManager.audioManager.audioFiles[2].Play();
+        gameManager.audioManager.audioFiles[1].Play();
     }
     #endregion
 
@@ -21,7 +21,7 @@ public class ButtonPause : MonoBehaviour
     void OnMouseUp()
     {
         gameManager.buttonManager.Pause();
-        gameManager.audioManager.audioFiles[3].Play();
+        gameManager.audioManager.audioFiles[2].Play();
         guiTexture.texture = defaultTexture;
     }
     #endregion

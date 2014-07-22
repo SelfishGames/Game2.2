@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
     public List<AudioSource> audioFiles = new List<AudioSource>();
     public GameManager gameManager;
     public GameObject[] sliders;
+
     #endregion
 
     #region Awake
@@ -17,10 +18,9 @@ public class AudioManager : MonoBehaviour
     {
         // Sound.
         audioFiles[0].volume = PlayerPrefs.GetFloat("Sound", 1);
-        audioFiles[2].volume = PlayerPrefs.GetFloat("ClickDown", 1);
-        audioFiles[3].volume = PlayerPrefs.GetFloat("ClickUp", 1);
-        // Music.
-        audioFiles[1].volume = PlayerPrefs.GetFloat("Music", 1);
+        audioFiles[1].volume = PlayerPrefs.GetFloat("ClickDown", 1);
+        audioFiles[2].volume = PlayerPrefs.GetFloat("ClickUp", 1);
+       
     }
     #endregion
 
@@ -36,16 +36,8 @@ public class AudioManager : MonoBehaviour
         {
             // Sound.
             audioFiles[0].volume = sliderSound.GetSliderValue();
+            audioFiles[1].volume = sliderSound.GetSliderValue();
             audioFiles[2].volume = sliderSound.GetSliderValue();
-            audioFiles[3].volume = sliderSound.GetSliderValue();
-            // Music.
-            audioFiles[1].volume = sliderMusic.GetSliderValue();
-
         }
-    }
-
-    void OnDestroy()
-    {
-
     }
 }
