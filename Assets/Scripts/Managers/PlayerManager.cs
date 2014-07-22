@@ -88,8 +88,8 @@ public class PlayerManager: MonoBehaviour
             gameManager.pointsManager.highScoreEnd.gameObject.SetActive(true);
             gameManager.pointsManager.highScoreDisplay.SetActive(true);
             // Remove the option to pause. 
-            gameManager.buttonManager.buttons[6].SetActive(false);
-            // Show quit button.
+            gameManager.buttonManager.buttons[5].SetActive(false);
+            // Show home button.
             gameManager.buttonManager.buttons[1].SetActive(true);
             // Show quit button.
             gameManager.buttonManager.buttons[2].SetActive(true);
