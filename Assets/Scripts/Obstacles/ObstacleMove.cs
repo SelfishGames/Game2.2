@@ -3,7 +3,6 @@ using System.Collections;
 
 public class ObstacleMove: MonoBehaviour
 {
-
     #region Fields
     public GameManager gameManager;
     public bool isHit = false; 
@@ -20,6 +19,7 @@ public class ObstacleMove: MonoBehaviour
     #region Update
     void Update()
     {
+        //If the obstacle is not hit then move it along
         if (!isHit)
         {
             transform.position = new Vector2(transform.position.x, Mathf.Sin(Time.time) * rand);

@@ -34,7 +34,6 @@ public class PlayerManager: MonoBehaviour
     #region Update
     void Update()
     {
-
         //Constantly moving the player along its local right vector
         transform.position += transform.right * speed * Time.deltaTime;
 
@@ -62,7 +61,6 @@ public class PlayerManager: MonoBehaviour
             //Locks the children (collider/sprite) to 45degrees rotation
             transform.GetChild(0).rotation = Quaternion.AngleAxis(45f, Vector3.forward);
         }
-       
     }
     #endregion
 

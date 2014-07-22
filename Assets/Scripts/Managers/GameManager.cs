@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 public class GameManager: MonoBehaviour
 {
-
     #region Fields 
     public List<Transform> obstacles = new List<Transform>();
     public GameObject playerExplosion;

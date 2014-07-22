@@ -24,12 +24,15 @@ public class AudioManager : MonoBehaviour
     }
     #endregion
 
+    #region PlaySound
     public void PlaySound()
     {
         // Play explosion when called by player.
         audioFiles[0].Play();
     }
+    #endregion
 
+    #region Update
     void Update()
     {
         if (gameManager.visibleSlider == true)
@@ -40,4 +43,5 @@ public class AudioManager : MonoBehaviour
             audioFiles[2].volume = sliderSound.GetSliderValue();
         }
     }
+    #endregion
 }

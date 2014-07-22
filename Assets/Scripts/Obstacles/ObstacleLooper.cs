@@ -11,18 +11,9 @@ public class ObstacleLooper : MonoBehaviour
     private int[] startRotation = { 0, 180 };
     #endregion
 
-
-    #region Start
-    void Start()
-    {
-
-    }
-    #endregion 
-
     #region OnTriggerEnter
     void OnTriggerEnter2D(Collider2D collider)
     {
-
         Vector2 pos = collider.transform.position;
 
         // Logic to move the pipes based on their collider size.
