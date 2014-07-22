@@ -3,18 +3,25 @@ using System.Collections.Generic;
 
 public class ObstacleCache : MonoBehaviour
 {
-
     #region Fields
-
     public GameManager gameManager;
     public List<GameObject> availableObstacles = new List<GameObject>();
 
     private int listLocation;
-    #endregion 
+    #endregion
 
+    #region ShuffleList
     private void ShuffleList()
     {
+<<<<<<< HEAD
+        // Always shuffles on new load to randomise the order they are picked. 
+        // Goes through each obstacle in the cache and swaps its location in the list with
+        // another obstacle.
+        for (int i = 0; i < availableObstacles.Count; i++)
+=======
+        //Shuffles the list of obstacles to make it rando everytime
         for(int i = 0; i < availableObstacles.Count; i++)
+>>>>>>> origin/master
         {
             GameObject temp = availableObstacles[i];
             int randomLocal = Random.Range(0, availableObstacles.Count);
@@ -22,13 +29,26 @@ public class ObstacleCache : MonoBehaviour
             availableObstacles[randomLocal] = temp;
         }
     }
+    #endregion
 
+<<<<<<< HEAD
+    // GetObstacle is to control the first bunch of obstacles, only called once. 
     public GameObject GetObstacle(int liveOBstacles)
     {
-
+        // Will be called on Start() after ObstacleManager's Start().
+=======
+    #region GetObstacle
+    public GameObject GetObstacle(int liveOBstacles)
+    {
+        //Shuffles the list to get a totally random obstacle
+>>>>>>> origin/master
         ShuffleList();
 
+        //Finds the first inactive obstacle and sets it to active
         int x = 0;
+        // Find the amount of liveObstacles (obstacles needed to fill the screen), 
+        // set them to active and pass them back to obstacle manager for use to 
+        // position on screen.
         for (; x < liveOBstacles; x++)
         {
             if (availableObstacles[x].gameObject.activeSelf == false)
@@ -38,17 +58,26 @@ public class ObstacleCache : MonoBehaviour
         }
         return availableObstacles[x];
     }
+    #endregion
 
-
+<<<<<<< HEAD
+    // ChangeObstacle is used to change the obstacle that has gone off screen.
+=======
+    #region ChangeObstacle
+>>>>>>> origin/master
     public GameObject ChangeObstacle()
     {
+        // Choose a random element in the list of ALL available obstacles. 
         int element = Random.Range(0, availableObstacles.Count);
 
+        // If it is false then set it active for use. 
         if (availableObstacles[element].gameObject.activeSelf == false)
         {
             availableObstacles[element].gameObject.SetActive(true);
             listLocation = element;
         }
+        // If the random obstacle was not inactive, the obstacle is currently on screen
+        // So re call this function to find an available obstacle. 
         else
         {
             ChangeObstacle();
@@ -56,18 +85,8 @@ public class ObstacleCache : MonoBehaviour
 
         return availableObstacles[listLocation];
     }
-
-    #region Start
-    void Start()
-    {
-
-    }
+<<<<<<< HEAD
+=======
     #endregion
-
-    #region Update
-    void Update()
-    {
-
-    }
-    #endregion
+>>>>>>> origin/master
 }
