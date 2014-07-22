@@ -10,8 +10,7 @@ public class LoopMusic: MonoBehaviour
     private GameManager gameManager;
     private static LoopMusic instance = null;
     #endregion
-
-    
+  
     public static LoopMusic Instance
     {
         get { return instance; }

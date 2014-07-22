@@ -11,10 +11,12 @@ public class ButtonManager : MonoBehaviour
     private int click = 0;
     #endregion
 
+    #region Awake
     void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
     }
+    #endregion
 
     #region Pause
     public void Pause()
@@ -64,7 +66,6 @@ public class ButtonManager : MonoBehaviour
         buttons[6].SetActive(true);
         // Reposition quit button.
         buttons[2].transform.position = buttons[3].transform.position;
-       
        
         gameManager.gameTitle.SetActive(false);
         
@@ -126,7 +127,6 @@ public class ButtonManager : MonoBehaviour
     #region Info
     public void Info()
     {
-
         if (click == 0)
         {
             click++;

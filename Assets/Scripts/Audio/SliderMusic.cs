@@ -17,12 +17,15 @@ public class SliderMusic: MonoBehaviour
     private float displayValue;
     #endregion
 
+    #region Awake
     void Awake()
     {
+        //Sets the knobs X pos to the last saved position
         targetPos = knob.position;
         targetPos.x = PlayerPrefs.GetFloat("musicKnobX", 4.864337f);
         knob.position = targetPos;
     }
+    #endregion
 
     #region Start
     void Start()
@@ -44,13 +47,18 @@ public class SliderMusic: MonoBehaviour
     }
     #endregion
 
+    #region OnTouchStay
     void OnTouchStay(Vector3 point)
     {
+        //While the knob is being touched, drag it along the slider
         targetPos = new Vector3(point.x, targetPos.y, targetPos.z);
     }
+    #endregion
 
+    #region GetSliderValue
     public float GetSliderValue()
     {
         return sliderPercent;
     }
+    #endregion
 }

@@ -20,14 +20,6 @@ public class GUIAspectRatio : MonoBehaviour
     }
     #endregion
 
-
-    // Remove update after Testing!!!!!!!!!
-    void Update()
-    {
-        SetScale();
-
-    }
-
     #region SetScale
     void SetScale()
     {
