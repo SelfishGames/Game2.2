@@ -16,7 +16,7 @@ public class ObstacleCache : MonoBehaviour
         // Always shuffles on new load to randomise the order they are picked. 
         // Goes through each obstacle in the cache and swaps its location in the list with
         // another obstacle.
-        for (int i = 0; i < availableObstacles.Count; i++)
+        for(int i = 0; i < availableObstacles.Count; i++)
         {
             GameObject temp = availableObstacles[i];
             int randomLocal = Random.Range(0, availableObstacles.Count);
@@ -32,7 +32,6 @@ public class ObstacleCache : MonoBehaviour
     {
         ShuffleList();
 
-        //Finds the first inactive obstacle and sets it to active
         int x = 0;
         // Find the amount of liveObstacles (obstacles needed to fill the screen), 
         // set them to active and pass them back to obstacle manager for use to 
