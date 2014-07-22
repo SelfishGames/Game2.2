@@ -13,18 +13,10 @@ public class ObstacleCache : MonoBehaviour
     #region ShuffleList
     private void ShuffleList()
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
         // Always shuffles on new load to randomise the order they are picked. 
         // Goes through each obstacle in the cache and swaps its location in the list with
         // another obstacle.
         for (int i = 0; i < availableObstacles.Count; i++)
-=======
-=======
->>>>>>> origin/master
-        //Shuffles the list of obstacles to make it rando everytime
-        for(int i = 0; i < availableObstacles.Count; i++)
->>>>>>> origin/master
         {
             GameObject temp = availableObstacles[i];
             int randomLocal = Random.Range(0, availableObstacles.Count);
@@ -34,24 +26,10 @@ public class ObstacleCache : MonoBehaviour
     }
     #endregion
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+    #region GetObstacle
     // GetObstacle is to control the first bunch of obstacles, only called once. 
     public GameObject GetObstacle(int liveOBstacles)
     {
-        // Will be called on Start() after ObstacleManager's Start().
-=======
-    #region GetObstacle
-    public GameObject GetObstacle(int liveOBstacles)
-    {
-        //Shuffles the list to get a totally random obstacle
->>>>>>> origin/master
-=======
-    #region GetObstacle
-    public GameObject GetObstacle(int liveOBstacles)
-    {
-        //Shuffles the list to get a totally random obstacle
->>>>>>> origin/master
         ShuffleList();
 
         //Finds the first inactive obstacle and sets it to active
@@ -70,15 +48,8 @@ public class ObstacleCache : MonoBehaviour
     }
     #endregion
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+    #region ChangeObstacle
     // ChangeObstacle is used to change the obstacle that has gone off screen.
-=======
-    #region ChangeObstacle
->>>>>>> origin/master
-=======
-    #region ChangeObstacle
->>>>>>> origin/master
     public GameObject ChangeObstacle()
     {
         // Choose a random element in the list of ALL available obstacles. 
@@ -99,11 +70,5 @@ public class ObstacleCache : MonoBehaviour
 
         return availableObstacles[listLocation];
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> origin/master
     #endregion
->>>>>>> origin/master
 }
