@@ -114,8 +114,8 @@ public class ButtonManager : MonoBehaviour
         //Sets the playerprefs for the volume and slider knob positions 
         //when the options menu is exited
         PlayerPrefs.SetFloat("Sound", gameManager.audioManager.audioFiles[0].volume);
-        PlayerPrefs.SetFloat("ClickDown", gameManager.audioManager.audioFiles[2].volume);
-        PlayerPrefs.SetFloat("ClickUp", gameManager.audioManager.audioFiles[3].volume);
+        PlayerPrefs.SetFloat("ClickDown", gameManager.audioManager.audioFiles[1].volume);
+        PlayerPrefs.SetFloat("ClickUp", gameManager.audioManager.audioFiles[2].volume);
         PlayerPrefs.SetFloat("Music", gameManager.audioManager.audioFiles[1].volume);
 
         PlayerPrefs.SetFloat("musicKnobX", gameManager.audioManager.sliderMusic.knob.position.x);
