@@ -44,7 +44,6 @@ public class LoopMusic: MonoBehaviour
             // Get gameManager in new scene. 
             GameObject gm = GameObject.Find("GameManager");
             gameManager = (GameManager)gm.GetComponent(typeof(GameManager));
-
         }
 
         if (gameManager.visibleSlider == true)

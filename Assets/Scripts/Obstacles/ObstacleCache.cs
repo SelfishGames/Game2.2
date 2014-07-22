@@ -26,9 +26,8 @@ public class ObstacleCache : MonoBehaviour
     }
     #endregion
 
-    // GetObstacle is to control the first bunch of obstacles, only called once. 
-    // Will be called on Start() after ObstacleManager's Start().
     #region GetObstacle
+    // GetObstacle is to control the first bunch of obstacles, only called once. 
     public GameObject GetObstacle(int liveOBstacles)
     {
         ShuffleList();
@@ -48,8 +47,8 @@ public class ObstacleCache : MonoBehaviour
     }
     #endregion
 
-    // ChangeObstacle is used to change the obstacle that has gone off screen.
     #region ChangeObstacle
+    // ChangeObstacle is used to change the obstacle that has gone off screen.
     public GameObject ChangeObstacle()
     {
         // Choose a random element in the list of ALL available obstacles. 

@@ -8,6 +8,7 @@ public class ButtonManager : MonoBehaviour
     public List<GameObject> buttons = new List<GameObject>();
     public GameManager gameManager;
 
+    private LoopMusic loopMusic;
     private int click = 0;
     #endregion
 
@@ -117,7 +118,16 @@ public class ButtonManager : MonoBehaviour
         PlayerPrefs.SetFloat("Sound", gameManager.audioManager.audioFiles[0].volume);
         PlayerPrefs.SetFloat("ClickDown", gameManager.audioManager.audioFiles[1].volume);
         PlayerPrefs.SetFloat("ClickUp", gameManager.audioManager.audioFiles[2].volume);
-        PlayerPrefs.SetFloat("Music", gameManager.loopMusic.music.volume);
+        
+
+        if (!gameManager.loopMusic)
+        {
+            // Get gameManager in new scene. 
+            GameObject gm = GameObject.Find("GameMusic");
+            loopMusic = (LoopMusic)gm.GetComponent(typeof(LoopMusic));
+
+            PlayerPrefs.SetFloat("Music", loopMusic.music.volume);
+        }
 
         PlayerPrefs.SetFloat("musicKnobX", gameManager.audioManager.sliderMusic.knob.position.x);
         PlayerPrefs.SetFloat("soundKnobX", gameManager.audioManager.sliderSound.knob.position.x);
