@@ -25,8 +25,10 @@ public class GameManager: MonoBehaviour
     public CamShake camShake;
     public ObstacleManager obstacleManager;
     public ObstacleCache obstacleCache;
-    
-    #endregion 
+    public LoopMusic loopMusic;
+
+
+    #endregion
 
     #region Start
     void Start()
