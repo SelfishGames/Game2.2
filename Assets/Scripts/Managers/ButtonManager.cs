@@ -8,6 +8,7 @@ public class ButtonManager : MonoBehaviour
     public List<GameObject> buttons = new List<GameObject>();
     public GameManager gameManager;
 
+    private int click = 0;
     #endregion
 
     void Awake()
@@ -53,18 +54,17 @@ public class ButtonManager : MonoBehaviour
     #region Options
     public void Options()
     {
+        // Hide info button.
+        buttons[0].SetActive(false);
         // Hide play button.
         buttons[4].SetActive(false);
-        // Hide quit button.
-        buttons[2].SetActive(false);
         // Hide option button.
         buttons[3].SetActive(false);
         // Show Back Button.
         buttons[6].SetActive(true);
         // Reposition quit button.
         buttons[2].transform.position = buttons[3].transform.position;
-        // Show quit button.
-        buttons[2].SetActive(true);
+       
        
         gameManager.gameTitle.SetActive(false);
         
@@ -74,6 +74,11 @@ public class ButtonManager : MonoBehaviour
         }
 
         gameManager.visibleSlider = true;
+        
+        if (click == 1)
+        {
+            RemoveCredits();
+        }     
     }
     #endregion
 
@@ -90,6 +95,8 @@ public class ButtonManager : MonoBehaviour
     {
         // Hide back.
         buttons[6].SetActive(false);
+        // Show info.
+        buttons[0].SetActive(true);
         // Show play.
         buttons[4].SetActive(true);
         // Show settings.
@@ -116,6 +123,26 @@ public class ButtonManager : MonoBehaviour
     }
     #endregion
 
+    #region Info
+    public void Info()
+    {
+
+        if (click == 0)
+        {
+            click++;
+            for (int i = 0; i < 4; i++)
+            {
+                gameManager.credits[i].SetActive(true);
+            }
+        }
+
+        else if(click == 1)
+        {
+            RemoveCredits();
+        }     
+    }
+    #endregion 
+
     #region GoToMenu
     IEnumerator GoToMenu()
     {
@@ -125,4 +152,15 @@ public class ButtonManager : MonoBehaviour
     }
 
     #endregion
+
+    #region RemoveCredits
+    void RemoveCredits()
+    {
+        click--;
+        for (int i = 0; i < 4; i++)
+        {
+            gameManager.credits[i].SetActive(false);
+        }
+    }
+    #endregion 
 }

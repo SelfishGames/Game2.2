@@ -20,7 +20,7 @@ public class SliderSound: MonoBehaviour
     void Awake()
     {
         targetPos = knob.position;
-        targetPos.x = PlayerPrefs.GetFloat("soundKnobX");
+        targetPos.x = PlayerPrefs.GetFloat("soundKnobX", 4.864337f);
         knob.position = targetPos;
     }
 
