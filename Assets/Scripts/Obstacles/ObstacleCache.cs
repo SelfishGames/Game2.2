@@ -14,11 +14,14 @@ public class ObstacleCache : MonoBehaviour
     private void ShuffleList()
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         // Always shuffles on new load to randomise the order they are picked. 
         // Goes through each obstacle in the cache and swaps its location in the list with
         // another obstacle.
         for (int i = 0; i < availableObstacles.Count; i++)
 =======
+=======
+>>>>>>> origin/master
         //Shuffles the list of obstacles to make it rando everytime
         for(int i = 0; i < availableObstacles.Count; i++)
 >>>>>>> origin/master
@@ -32,10 +35,17 @@ public class ObstacleCache : MonoBehaviour
     #endregion
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // GetObstacle is to control the first bunch of obstacles, only called once. 
     public GameObject GetObstacle(int liveOBstacles)
     {
         // Will be called on Start() after ObstacleManager's Start().
+=======
+    #region GetObstacle
+    public GameObject GetObstacle(int liveOBstacles)
+    {
+        //Shuffles the list to get a totally random obstacle
+>>>>>>> origin/master
 =======
     #region GetObstacle
     public GameObject GetObstacle(int liveOBstacles)
@@ -61,7 +71,11 @@ public class ObstacleCache : MonoBehaviour
     #endregion
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // ChangeObstacle is used to change the obstacle that has gone off screen.
+=======
+    #region ChangeObstacle
+>>>>>>> origin/master
 =======
     #region ChangeObstacle
 >>>>>>> origin/master
@@ -86,7 +100,10 @@ public class ObstacleCache : MonoBehaviour
         return availableObstacles[listLocation];
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> origin/master
     #endregion
 >>>>>>> origin/master
 }
