@@ -59,7 +59,10 @@ public class PlayerManager: MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * rotSpeed);
 
             //Locks the children (collider/sprite) to 45degrees rotation
-            transform.GetChild(0).rotation = Quaternion.AngleAxis(45f, Vector3.forward);
+            //transform.GetChild(0).rotation = Quaternion.AngleAxis(45f, Vector3.forward);
+
+            transform.GetChild(1).particleSystem.startRotation = this.transform.rotation.z * Mathf.Deg2Rad;
+            transform.GetChild(2).particleSystem.startRotation = this.transform.rotation.z * Mathf.Deg2Rad;
         }
     }
     #endregion
