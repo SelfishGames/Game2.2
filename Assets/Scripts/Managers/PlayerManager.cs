@@ -18,6 +18,8 @@ public class PlayerManager: MonoBehaviour
  
     //rotSpeed is how fast it rotates
     private float rotSpeed = 0.8f;
+
+    private bool recentNearMiss;
     
     // Make private after testing.
     public float intensity, time;
@@ -28,6 +30,7 @@ public class PlayerManager: MonoBehaviour
     void Start()
     {
         playerObject = gameObject;
+        recentNearMiss = false;
     }
     #endregion
 
@@ -98,6 +101,33 @@ public class PlayerManager: MonoBehaviour
             gameManager.buttonManager.buttons[2].SetActive(true);
         }
         playerObject.SetActive(false);
+    }
+    #endregion
+
+    #region TriggerEnter
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        //Checks if the object is an actual obstacle
+        if (col.gameObject.name == "ObsGrey" || col.gameObject.name == "ObsOrange")
+        {
+            if (!recentNearMiss)
+            {
+                recentNearMiss = true;
+            }
+        }
+    }
+    #endregion
+
+    #region TriggerExit
+    void OnTriggerExit2D(Collider2D col)
+    {
+        //Checks if the object is an actual obstacle
+        if (col.gameObject.name == "ObsGrey" || col.gameObject.name == "ObsOrange")
+        {
+            recentNearMiss = false;
+            //Applies the bonus points after passing the obstacle
+            gameManager.pointsManager.NearMissBonus();
+        }
     }
     #endregion
 }

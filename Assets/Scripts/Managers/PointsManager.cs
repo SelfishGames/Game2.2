@@ -57,7 +57,18 @@ public class PointsManager : MonoBehaviour
             GUIScore.text = ("Score: " + playerScore.ToString());
             playerScoreEnd.text = ("Your Score: " + playerScore.ToString());
             highScoreEnd.text = ("High Score: " + highScore.ToString());
+
+            //Constantly lerping the colour to black
+            GUIScore.color = Color.Lerp(GUIScore.color, Color.black, Time.deltaTime);
         }
+    }
     #endregion
+
+    public void NearMissBonus()
+    {
+        //Applies the bonus to the score
+        playerScore += 100;
+        //Snaps the text colour to green to indicate a bonus
+        GUIScore.color = Color.green;
     }
 }
