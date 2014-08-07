@@ -84,8 +84,8 @@ public class PlayerManager: MonoBehaviour
 #endif
         // Display explosion.
         gameManager.TriggerCollision();
-        // Show Play button.
-        gameManager.buttonManager.buttons[4].SetActive(true);
+        // Activate invisible anywhere button.
+        gameManager.buttonManager.buttons[7].SetActive(true);
         // Make GameManager know the player is dead.
         gameManager.isDead = true;
         if (Application.loadedLevelName == "Level1")

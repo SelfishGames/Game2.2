@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 public class GameManager: MonoBehaviour
 {
-    #region Fields 
+    #region Fields
     public List<Transform> obstacles = new List<Transform>();
     public GameObject playerExplosion;
     public Transform player;
@@ -37,11 +37,11 @@ public class GameManager: MonoBehaviour
     }
     #endregion
 
-    #region Update 
+    #region Update
     void Update()
     {
         //Quit the game
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
@@ -51,6 +51,7 @@ public class GameManager: MonoBehaviour
             Screen.orientation = ScreenOrientation.LandscapeLeft;
         else if (Input.deviceOrientation == DeviceOrientation.LandscapeRight)
             Screen.orientation = ScreenOrientation.LandscapeRight;
+
     }
     #endregion
 

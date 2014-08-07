@@ -7,6 +7,9 @@ public class ButtonManager : MonoBehaviour
     #region Fields
     public List<GameObject> buttons = new List<GameObject>();
     public GameManager gameManager;
+    public bool pause = false;
+    public bool home = false;
+    public bool quit = false;
 
     private LoopMusic loopMusic;
     private int click = 0;
@@ -22,6 +25,7 @@ public class ButtonManager : MonoBehaviour
     #region Pause
     public void Pause()
     {
+        pause = true;
         if (Time.timeScale == 1)
         {
             Time.timeScale = 0;
@@ -50,6 +54,7 @@ public class ButtonManager : MonoBehaviour
     #region Quit
     public void Quit()
     {
+        quit = true;
         Application.Quit();
     }
     #endregion
@@ -87,6 +92,8 @@ public class ButtonManager : MonoBehaviour
     #region ButtonHome
     public void ButtonHome()
     {
+        home = true;
+
         StartCoroutine("GoToMenu");
         Time.timeScale = 1;
     }
