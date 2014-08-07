@@ -3,14 +3,12 @@ using System.Collections.Generic;
 
 public class AudioManager : MonoBehaviour
 {
-
     #region Fields
     public SliderSound sliderSound;
     public SliderMusic sliderMusic;
     public List<AudioSource> audioFiles = new List<AudioSource>();
     public GameManager gameManager;
     public GameObject[] sliders;
-
     #endregion
 
     #region Awake
