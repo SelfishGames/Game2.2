@@ -37,7 +37,7 @@ public class TutorialScript : MonoBehaviour
             // Allow the player to move the obstacles.
             gameManager.isDead = false;
 
-            // If the obstacle has been moved to the correct position. 
+            // If the obstacle has been moved to the correct position.
             if (targetObstacle.transform.localPosition.y >= -0.1f && targetObstacle.transform.localPosition.y <= 0.1f)
             {
                 // Return movement to player and the particles.
@@ -51,10 +51,22 @@ public class TutorialScript : MonoBehaviour
             }
         }
 
+        if (gameManager.isDead)
+        {
+
+
+        }
+
         if (transform.localPosition.x >= 11.65f)
         {
             hintMessage[1].SetActive(false);
+#if UNITY_ANDROID
             hintMessage[2].SetActive(true);
+#endif
+
+#if UNITY_WEBPLAYER
+            hintMessage[4].SetActive(true);
+#endif
             gameManager.playCount = 1;
         }
     }
