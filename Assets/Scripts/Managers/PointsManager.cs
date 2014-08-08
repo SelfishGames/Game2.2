@@ -17,6 +17,7 @@ public class PointsManager : MonoBehaviour
     private int playerScore;
     private int highScore;
     private float timer;
+    private Color nearMissColour;
     #endregion
 
     #region Start
@@ -24,6 +25,9 @@ public class PointsManager : MonoBehaviour
     {
         // Get High Score.
         highScore = PlayerPrefs.GetInt("highScore", 0);
+
+        //Saves the colour values to reassign at runtime
+        nearMissColour = nearMissTexts[0].transform.GetChild(0).guiText.color;
     }
     #endregion 
 
@@ -76,7 +80,12 @@ public class PointsManager : MonoBehaviour
                     if (screenPosition.x < 0)
                         go.SetActive(false);
                     else
+                    {
                         go.transform.GetChild(0).transform.position = screenPosition;
+                        if (Fade(go.transform.GetChild(0).guiText) <= 0f)
+                            go.SetActive(false);
+                    }
+                    
 
                     //The parent object is for world space, whereas the child object with the GUIText
                     //is for viewport space (Incase you get confused)
@@ -99,12 +108,25 @@ public class PointsManager : MonoBehaviour
         {
             if(!nearMissTexts[i].activeSelf)
             {
-                //Positions it near the player and activates it
+                //Positions it near the player, resets the colour and activates it
                 nearMissTexts[i].transform.position = player.position;
+                nearMissTexts[i].transform.GetChild(0).guiText.color = nearMissColour;
                 nearMissTexts[i].gameObject.SetActive(true);
                 break;
             }
         }
+    }
+    #endregion
+
+    #region Fade
+    float Fade(GUIText text)
+    {
+        //Used to fade out the nearMiss text messages
+        Color tempColour = text.color;
+        tempColour.a -= Time.deltaTime * 0.5f;
+        text.color = tempColour;
+        //Returns the alpha value to check if it has vanished
+        return text.color.a;
     }
     #endregion
 }
