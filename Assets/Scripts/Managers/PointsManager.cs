@@ -13,7 +13,7 @@ public class PointsManager : MonoBehaviour
     public GUIText highScoreEnd;
     public GameManager gameManager;
     public GameObject highScoreDisplay;
-    
+
     private int playerScore;
     private int highScore;
     private float timer;
@@ -29,7 +29,7 @@ public class PointsManager : MonoBehaviour
         //Saves the colour values to reassign at runtime
         nearMissColour = nearMissTexts[0].transform.GetChild(0).guiText.color;
     }
-    #endregion 
+    #endregion
 
     #region OnDestroy
     void OnDestroy()
@@ -37,7 +37,7 @@ public class PointsManager : MonoBehaviour
         // Store HighScore.
         PlayerPrefs.SetInt("highScore", highScore);
     }
-    #endregion 
+    #endregion
 
     #region FixedUpdate
     void FixedUpdate()
@@ -68,7 +68,7 @@ public class PointsManager : MonoBehaviour
             GUIScore.color = Color.Lerp(GUIScore.color, Color.black, Time.deltaTime);
 
             //Updates all active NearMiss messages
-            foreach(GameObject go in nearMissTexts)
+            foreach (GameObject go in nearMissTexts)
             {
                 if (go.activeSelf)
                 {
@@ -85,11 +85,18 @@ public class PointsManager : MonoBehaviour
                         if (Fade(go.transform.GetChild(0).guiText) <= 0f)
                             go.SetActive(false);
                     }
-                    
-
                     //The parent object is for world space, whereas the child object with the GUIText
                     //is for viewport space (Incase you get confused)
                 }
+            }
+
+        }
+
+        else
+        {
+            foreach (GameObject go in nearMissTexts)
+            {
+            	go.SetActive(false);
             }
         }
     }
@@ -104,9 +111,9 @@ public class PointsManager : MonoBehaviour
         GUIScore.color = Color.green;
 
         //Finds an inactive NearMiss message to use
-        for(int i = 0; i < nearMissTexts.Count; i++)
+        for (int i = 0; i < nearMissTexts.Count; i++)
         {
-            if(!nearMissTexts[i].activeSelf)
+            if (!nearMissTexts[i].activeSelf)
             {
                 //Positions it near the player, resets the colour and activates it
                 nearMissTexts[i].transform.position = player.position;
