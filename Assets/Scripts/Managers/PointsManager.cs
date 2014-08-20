@@ -18,7 +18,7 @@ public class PointsManager : MonoBehaviour
     private int highScore;
     private float timer;
     private Color nearMissColour;
-    private Vector3 offset = new Vector3(0, 1f, 0);
+    private Vector3 offset = new Vector3(0, 1.5f, 0);
     #endregion
 
     #region Start
@@ -116,12 +116,8 @@ public class PointsManager : MonoBehaviour
         {
             if (!nearMissTexts[i].activeSelf)
             {
-                //Positions the text above or below the player depending on its current height
-                if(player.position.y < 0)
-                    nearMissTexts[i].transform.position = player.position + offset;
-                else if (player.position.y > 0)
-                    nearMissTexts[i].transform.position = player.position - offset;
-
+                //Positions the text offset from the player
+                nearMissTexts[i].transform.position = player.position + offset;
                 //Resets the colour and sets it active
                 nearMissTexts[i].transform.GetChild(0).guiText.color = nearMissColour;
                 nearMissTexts[i].gameObject.SetActive(true);
