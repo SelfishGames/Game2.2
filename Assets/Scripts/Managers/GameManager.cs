@@ -14,7 +14,7 @@ public class GameManager: MonoBehaviour
     [HideInInspector]
     public int playCount = 0;
     public GameObject gameTitle;
-    public List<GameObject> credits = new List<GameObject>();
+    public GameObject credits;
 
     // Objects for each of the manager classes
     public ButtonManager buttonManager;
@@ -25,6 +25,7 @@ public class GameManager: MonoBehaviour
     public ObstacleManager obstacleManager;
     public ObstacleCache obstacleCache;
     public LoopMusic loopMusic;
+    public CreditManager creditManager;
 
 
     #endregion

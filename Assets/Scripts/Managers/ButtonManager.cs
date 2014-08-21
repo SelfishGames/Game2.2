@@ -72,20 +72,20 @@ public class ButtonManager : MonoBehaviour
         buttons[6].SetActive(true);
         // Reposition quit button.
         buttons[2].transform.position = buttons[3].transform.position;
-       
+
         gameManager.gameTitle.SetActive(false);
-        
+
         for (int i = 0; i < 2; i++)
         {
             gameManager.audioManager.sliders[i].SetActive(true);
         }
 
         gameManager.visibleSlider = true;
-        
+
         if (click == 1)
         {
             RemoveCredits();
-        }     
+        }
     }
     #endregion
 
@@ -120,16 +120,16 @@ public class ButtonManager : MonoBehaviour
         }
         gameManager.visibleSlider = false;
 
-        //Sets the playerprefs for the volume and slider knob positions 
+        //Sets the playerprefs for the volume and slider knob positions
         //when the options menu is exited
         PlayerPrefs.SetFloat("Sound", gameManager.audioManager.audioFiles[0].volume);
         PlayerPrefs.SetFloat("ClickDown", gameManager.audioManager.audioFiles[1].volume);
         PlayerPrefs.SetFloat("ClickUp", gameManager.audioManager.audioFiles[2].volume);
-        
+
 
         if (!gameManager.loopMusic)
         {
-            // Get gameManager in new scene. 
+            // Get gameManager in new scene.
             GameObject gm = GameObject.Find("GameMusic");
             loopMusic = (LoopMusic)gm.GetComponent(typeof(LoopMusic));
 
@@ -147,18 +147,15 @@ public class ButtonManager : MonoBehaviour
         if (click == 0)
         {
             click++;
-            for (int i = 0; i < 4; i++)
-            {
-                gameManager.credits[i].SetActive(true);
-            }
+            gameManager.credits.SetActive(true);
         }
 
-        else if(click == 1)
+        else if (click == 1)
         {
             RemoveCredits();
-        }     
+        }
     }
-    #endregion 
+    #endregion
 
     #region GoToMenu
     IEnumerator GoToMenu()
@@ -174,10 +171,9 @@ public class ButtonManager : MonoBehaviour
     void RemoveCredits()
     {
         click--;
-        for (int i = 0; i < 4; i++)
-        {
-            gameManager.credits[i].SetActive(false);
-        }
+
+        gameManager.credits.SetActive(false);
+        gameManager.creditManager.ResetPosition();
     }
-    #endregion 
+    #endregion
 }
