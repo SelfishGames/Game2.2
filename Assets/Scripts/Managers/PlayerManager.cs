@@ -10,8 +10,8 @@ public class PlayerManager: MonoBehaviour
     // Local variable.
     private GameObject playerObject;
 
-    private float minHeight = -0.7f,
-        maxHeight = 0.7f;
+    private float minHeight = -0.6f,
+        maxHeight = 0.6f;
     private float targetHeight;
     private Vector3 targetOffset = new Vector3(7f, 0, 0);
     private Vector3 targetLocation;
