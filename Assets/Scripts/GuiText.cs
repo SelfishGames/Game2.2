@@ -30,9 +30,14 @@ public class GuiText : MonoBehaviour
             endScores[i].fontSize = Screen.width / 30;
         }
 
-        for (int i = 0; i < credits.Length; i++)
+        // Only check if at the main menu.
+        if (Application.loadedLevelName == "MainMenu")
         {
-            credits[i].fontSize = Screen.width / 35;
+            // Control size of credit text.
+            for (int i = 0; i < credits.Length; i++)
+            {
+                credits[i].fontSize = Screen.width / 35;
+            }
         }
     }
 }
