@@ -7,6 +7,11 @@ TextureImporter:
     21300004: ObsBlue
     21300006: ObsOrange
     21300008: Border
+    21300010: TileSheet_0
+    21300012: TileSheet_1
+    21300014: TileSheet_2
+    21300016: TileSheet_3
+    21300018: TileSheet_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -48,55 +53,55 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: BG
+    - name: TileSheet_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 592
-        width: 1000
-        height: 1000
+        x: 5
+        y: 591
+        width: 1002
+        height: 1002
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TileSheet_1
+      rect:
+        serializedVersion: 2
+        x: 1180
+        y: 689
+        width: 80
+        height: 719
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: ObsGreen
+    - name: TileSheet_2
       rect:
         serializedVersion: 2
-        x: 1207
-        y: 737
-        width: 84
-        height: 722
+        x: 1282
+        y: 689
+        width: 80
+        height: 719
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: ObsBlue
+    - name: TileSheet_3
       rect:
         serializedVersion: 2
-        x: 1305
-        y: 737
-        width: 85
-        height: 722
+        x: 1388
+        y: 689
+        width: 79
+        height: 719
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: ObsOrange
+    - name: TileSheet_4
       rect:
         serializedVersion: 2
-        x: 1409
-        y: 737
-        width: 84
-        height: 722
+        x: 5
+        y: 2
+        width: 1002
+        height: 503
       alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Border
-      rect:
-        serializedVersion: 2
-        x: 6
-        y: 4
-        width: 1000
-        height: 500
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
