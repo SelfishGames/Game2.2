@@ -108,7 +108,7 @@ public class PlayerManager: MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         //Checks if the object is an actual obstacle
-        if (col.gameObject.name == "ObsGrey" || col.gameObject.name == "ObsOrange")
+        if (col.gameObject.name == "ObsGreen" || col.gameObject.name == "ObsOrange" || col.gameObject.name == "ObsBlue")
         {
             if (!recentNearMiss)
             {
@@ -122,7 +122,7 @@ public class PlayerManager: MonoBehaviour
     void OnTriggerExit2D(Collider2D col)
     {
         //Checks if the object is an actual obstacle
-        if (col.gameObject.name == "ObsGrey" || col.gameObject.name == "ObsOrange")
+        if (col.gameObject.name == "ObsGreen" || col.gameObject.name == "ObsOrange" || col.gameObject.name == "ObsBlue")
         {
             recentNearMiss = false;
             //Applies the bonus points after passing the obstacle
