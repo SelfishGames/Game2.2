@@ -91,7 +91,6 @@ public class PointsManager : MonoBehaviour
                 }
             }
         }
-
         else
         {
             foreach (GameObject go in nearMissTexts)
