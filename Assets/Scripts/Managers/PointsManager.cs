@@ -90,7 +90,6 @@ public class PointsManager : MonoBehaviour
                     //is for viewport space (Incase you get confused)
                 }
             }
-
         }
 
         else
