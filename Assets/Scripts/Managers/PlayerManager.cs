@@ -20,6 +20,8 @@ public class PlayerManager: MonoBehaviour
     private float rotSpeed = 0.8f;
 
     private bool recentNearMiss;
+    private GameObject newObstacle,
+        oldObstacle;
     
     // Make private after testing.
     public float intensity, time;
@@ -107,13 +109,10 @@ public class PlayerManager: MonoBehaviour
     #region TriggerEnter
     void OnTriggerEnter2D(Collider2D col)
     {
-        //Checks if the object is an actual obstacle
-        if (col.gameObject.name == "ObsGreen" || col.gameObject.name == "ObsOrange" || col.gameObject.name == "ObsBlue")
+        //Resets the near miss bool after passing an obstacle
+        if(col.gameObject.layer == LayerMask.NameToLayer("Obs"))
         {
-            if (!recentNearMiss)
-            {
-                recentNearMiss = true;
-            }
+            recentNearMiss = false;
         }
     }
     #endregion
@@ -121,12 +120,17 @@ public class PlayerManager: MonoBehaviour
     #region TriggerExit
     void OnTriggerExit2D(Collider2D col)
     {
-        //Checks if the object is an actual obstacle
+        //Checks if the trigger hits an actual pipe
         if (col.gameObject.name == "ObsGreen" || col.gameObject.name == "ObsOrange" || col.gameObject.name == "ObsBlue")
         {
-            recentNearMiss = false;
-            //Applies the bonus points after passing the obstacle
-            gameManager.pointsManager.NearMissBonus();
+            //If the player has not "Nearly missed" this obstacle yet
+            if (!recentNearMiss)
+            {
+                recentNearMiss = true;
+
+                //Applies the bonus points after passing the obstacle
+                gameManager.pointsManager.NearMissBonus();
+            }
         }
     }
     #endregion
