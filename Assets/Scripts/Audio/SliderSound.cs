@@ -43,7 +43,11 @@ public class SliderSound: MonoBehaviour
         sliderPercent = Mathf.Clamp01((knob.localPosition.x + sliderLength / 2) / sliderLength);
         displayValue = Mathf.Lerp(valueRange[0], valueRange[1], sliderPercent);
 
-        textMesh.text = sliderName + ": " + displayValue.ToString("F" + decimalPlaces);
+        // This just displays the word sound.
+        textMesh.text = sliderName;
+        // The original way we had it changing the numbers based on the sound level
+        // Seemed unneeded and caused a little visual glitch the first time the slider is used. 
+        //textMesh.text = sliderName + ": " + displayValue.ToString("F" + decimalPlaces);
     }
     #endregion
 
