@@ -6,14 +6,16 @@ public class ObstacleManager : MonoBehaviour
     #region Fields
     public GameManager gameManager;
     public List<GameObject> liveObstacles = new List<GameObject>();
+    public Transform obstacleParent;
 
     private int totalLive = 6;
     private Transform selected;
     private Vector3 offset;
+    private Vector3 mouseScreenPos;
     private float minHeight = -1f,
         maxHeight = 1f;
     private int startX;
-    private int[] startRotation = {0,180};
+    private int[] startRotation = { 0, 180 };
     #endregion
 
     #region Awake
@@ -31,8 +33,8 @@ public class ObstacleManager : MonoBehaviour
 
                 liveObstacles.Add(gameManager.obstacleCache.availableObstacles[i]);
                 liveObstacles[i].transform.position = new Vector2(startX, Random.Range(minHeight, maxHeight));
-                liveObstacles[i].transform.rotation = new Quaternion(transform.rotation.x, startRotation[rand], 
-                    transform.rotation.z,transform.rotation.w);
+                liveObstacles[i].transform.rotation = new Quaternion(transform.rotation.x, startRotation[rand],
+                    transform.rotation.z, transform.rotation.w);
             }
         }
     }
@@ -41,58 +43,38 @@ public class ObstacleManager : MonoBehaviour
     #region Update
     void Update()
     {
-        //Constantly shoots a raycast at the mouse/touch position
-        RaycastHit2D hit = Physics2D.Raycast(
-            Camera.main.ScreenToWorldPoint(Input.mousePosition),
-            Vector2.zero, 0, 5 << LayerMask.NameToLayer("Obs"));
-
-            // If hit has found an object and player is not dead.
-            if (hit && !gameManager.isDead)
-            {
-                if (Input.GetMouseButtonDown(0))
-                {
-                    if (hit.collider.gameObject.tag == "Obstacle")
-                    {
-                        //If an object has not been selected yet
-                        if (!selected)
-                        {
-                            selected = hit.transform;
-                            //Gets the offset of the selected obstacle and the mouse on screen in world space
-                            offset = selected.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
-                        }
-                    }
-                }
-                //Once the user lets go of mouseClick, reset selected to null
-                else if (Input.GetMouseButtonUp(0))
-                    selected = null;
-            }
-            else
-            {
-                //If hit is null
-                return;
-            }         
-
-        //If an obstacles is selected, move it
-        if (selected)
-            DragObstacle();
-    }
-    #endregion
-
-    #region DragObstacle
-    void DragObstacle()
-    {
         //Position of the mouse on screen
-        Vector3 mouseScreenPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);
+        mouseScreenPos = Camera.main.ScreenToWorldPoint(
+            new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 
-        //Y value of the mouse plus offset so the distance between the object and the mouse stays the same
-        float y = Camera.main.ScreenToWorldPoint(mouseScreenPos).y + offset.y;
+        // If the player has not yet died
+        if (!gameManager.isDead)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                //Gets the offset of the obstacle parent object and the position of the mouse click
+                offset = obstacleParent.position - mouseScreenPos;
+            }
+        }
 
-        //Temp Vector3 to set the object with only the modified Y value, so that it doesnt move on the X
-        Vector3 dragPos = selected.position;
-        dragPos.y = y;
-        dragPos.y = Mathf.Clamp(dragPos.y, minHeight, maxHeight);
-
-        selected.position = dragPos;
+        //If the user is holding the button down, then drag the obstacles
+        if (Input.GetMouseButton(0))
+            DragObstacles();
     }
     #endregion
+
+    #region DragObstacles
+    void DragObstacles()
+    {
+        //Y value of the mouse plus offset so the distance between the object and the mouse stays the same
+        float y = mouseScreenPos.y + offset.y;
+
+        //Temp var to move only the Y position
+        Vector3 dragPos = obstacleParent.position;
+        dragPos.y = y;
+        //dragPos.y = Mathf.Clamp(dragPos.y, minHeight, maxHeight);
+
+        obstacleParent.position = dragPos;
+    }
 }
+    #endregion
