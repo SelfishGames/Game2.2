@@ -30,45 +30,10 @@ public class ObstacleManager : MonoBehaviour
                 float newRand = Random.RandomRange(-1.1f,1.1f);
                 startX = 3 * i + 9;
 
-                
-
-                //liveObstacles[i].transform.localPosition = new Vector3(newRand, transform.localPosition.y, transform.localPosition.z);
-
                 liveObstacles.Add(gameManager.obstacleCache.availableObstacles[i]);
                 liveObstacles[i].transform.position = new Vector2(startX, Random.Range(minHeight, maxHeight));
                 liveObstacles[i].transform.rotation = new Quaternion(transform.rotation.x, startRotation[rand], 
                     transform.rotation.z,transform.rotation.w);
-                //foreach (Transform child in liveObstacles[i].transform)
-                //{
-
-                //    float yPos = 0;
-                //    if(child.name == "ObsBlue")
-                //    {
-                //        yPos = 3.6f;
-                //    }
-                //    else if(child.name == "ObsOrange")
-                //    {
-                //        yPos = 3.4f;
-                //    }
-                //    else
-                //    {
-                //        yPos = 3.7f;
-                //    }
-
-                //    for (int j = 0; j < 2; j++)
-                //    {
-                //        if(j == 2)
-                //        {
-                //            float nyPos = yPos - yPos *2;
-                //            child.transform.localPosition = new Vector2(newRand, nyPos);
-                //        }
-                //        else
-                //        { child.transform.localPosition = new Vector2(newRand, yPos); }
-                       
-                //    }
-                        
-
-                //}
             }
         }
     }
