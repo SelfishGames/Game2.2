@@ -12,8 +12,10 @@ public class ObstacleManager : MonoBehaviour
     private Transform selected;
     private Vector3 offset;
     private Vector3 mouseScreenPos;
-    private float minHeight = -1f,
-        maxHeight = 1f;
+    private float spawnMinHeight = -1f,
+        spawnMaxHeight = 1f;
+    private float dragMinHeight = -2f,
+        dragMaxHeight = 2f;
     private int startX;
     private int[] startRotation = {0,180};
     #endregion
@@ -32,15 +34,16 @@ public class ObstacleManager : MonoBehaviour
                 float newRand = Random.RandomRange(-1.1f,1.1f);
                 startX = 3 * i + 9;
 
-<<<<<<< HEAD
-=======
-                //liveObstacles[i].transform.localPosition = new Vector3(newRand, transform.localPosition.y, transform.localPosition.z);
-
->>>>>>> origin/master
                 liveObstacles.Add(gameManager.obstacleCache.availableObstacles[i]);
-                liveObstacles[i].transform.position = new Vector2(startX, Random.Range(minHeight, maxHeight));
-                liveObstacles[i].transform.rotation = new Quaternion(transform.rotation.x, startRotation[rand], 
-                    transform.rotation.z,transform.rotation.w);
+                liveObstacles[i].transform.position = new Vector2(
+                    startX, 
+                    Random.Range(spawnMinHeight, spawnMaxHeight));
+                
+                liveObstacles[i].transform.rotation = new Quaternion(
+                    transform.rotation.x, 
+                    startRotation[rand], 
+                    transform.rotation.z,
+                    transform.rotation.w);
             }
         }
     }
@@ -78,7 +81,7 @@ public class ObstacleManager : MonoBehaviour
         //Temp Vector3 to set the object with only the modified Y value, so that it doesnt move on the X
         Vector3 dragPos = obstacleParent.position;
         dragPos.y = y;
-        dragPos.y = Mathf.Clamp(dragPos.y, minHeight, maxHeight);
+        dragPos.y = Mathf.Clamp(dragPos.y, dragMinHeight, dragMaxHeight);
 
         obstacleParent.position = dragPos;
     }
