@@ -78,7 +78,7 @@ public class ObstacleManager : MonoBehaviour
         //Temp Vector3 to set the object with only the modified Y value, so that it doesnt move on the X
         Vector3 dragPos = obstacleParent.position;
         dragPos.y = y;
-        //dragPos.y = Mathf.Clamp(dragPos.y, minHeight, maxHeight);
+        dragPos.y = Mathf.Clamp(dragPos.y, minHeight, maxHeight);
 
         obstacleParent.position = dragPos;
     }
