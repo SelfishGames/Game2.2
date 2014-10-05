@@ -6,8 +6,8 @@ public class ObstacleLooper : MonoBehaviour
     #region Fields
     public GameManager gameManager;
 
-    private float minHeight = -1f;
-    private float maxHeight = 1f;
+    private float minHeight = -1f,
+        maxHeight = 1f;
     private int[] startRotation = { 0, 180 };
     #endregion
 
@@ -30,9 +30,10 @@ public class ObstacleLooper : MonoBehaviour
             // Take the size of the collider and move it six times 
             // (Current number of obstacles).
             pos.y = Random.Range(minHeight, maxHeight);
+            Debug.Log("Random Y pos: " + pos.y);
             pos.x += widthOfObject * gameManager.obstacles.Count;
 
-            gameManager.obstacleManager.liveObstacles[5].transform.position = pos;
+            gameManager.obstacleManager.liveObstacles[5].transform.localPosition = pos;
             // Get a random rotation (used for the blue obstacles mainly).
             gameManager.obstacleManager.liveObstacles[5].transform.rotation = new 
                 Quaternion(transform.rotation.x, startRotation[rand], 
