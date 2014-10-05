@@ -12,8 +12,8 @@ public class ObstacleManager : MonoBehaviour
     private Transform selected;
     private Vector3 offset;
     private Vector3 mouseScreenPos;
-    private float minHeight = -1f,
-        maxHeight = 1f;
+    private float minHeight = -2f,
+        maxHeight = 2f;
     private int startX;
     private int[] startRotation = {0,180};
     #endregion
@@ -29,7 +29,6 @@ public class ObstacleManager : MonoBehaviour
             for (int i = 0; i < totalLive; i++)
             {
                 int rand = Random.Range(0, 2);
-                float newRand = Random.RandomRange(-1.1f,1.1f);
                 startX = 3 * i + 9;
 
                 //liveObstacles[i].transform.localPosition = new Vector3(newRand, transform.localPosition.y, transform.localPosition.z);
