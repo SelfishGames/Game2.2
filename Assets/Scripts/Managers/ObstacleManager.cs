@@ -12,15 +12,12 @@ public class ObstacleManager : MonoBehaviour
     private Transform selected;
     private Vector3 offset;
     private Vector3 mouseScreenPos;
-<<<<<<< HEAD
     private float minHeight = -2f,
         maxHeight = 2f;
-=======
     private float spawnMinHeight = -1f,
         spawnMaxHeight = 1f;
     private float dragMinHeight = -2f,
         dragMaxHeight = 2f;
->>>>>>> origin/master
     private int startX;
     private int[] startRotation = {0,180};
     #endregion
