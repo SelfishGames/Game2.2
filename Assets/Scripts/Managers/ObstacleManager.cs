@@ -12,6 +12,8 @@ public class ObstacleManager : MonoBehaviour
     private Transform selected;
     private Vector3 offset;
     private Vector3 mouseScreenPos;
+    private float minHeight = -2f,
+        maxHeight = 2f;
     private float spawnMinHeight = -1f,
         spawnMaxHeight = 1f;
     private float dragMinHeight = -2f,
@@ -31,7 +33,6 @@ public class ObstacleManager : MonoBehaviour
             for (int i = 0; i < totalLive; i++)
             {
                 int rand = Random.Range(0, 2);
-                float newRand = Random.RandomRange(-1.1f,1.1f);
                 startX = 3 * i + 9;
 
                 liveObstacles.Add(gameManager.obstacleCache.availableObstacles[i]);

@@ -14,7 +14,7 @@ public class SliderMusic: MonoBehaviour
     private float sliderPercent;
     private float sliderLength;
     private Vector3 targetPos;
-    private float displayValue;
+
     #endregion
 
     #region Awake
@@ -41,7 +41,7 @@ public class SliderMusic: MonoBehaviour
         knob.position = Vector3.Lerp(knob.position, targetPos, Time.deltaTime * 7);
 
         sliderPercent = Mathf.Clamp01((knob.localPosition.x + sliderLength / 2) / sliderLength);
-        displayValue = Mathf.Lerp(valueRange[0], valueRange[1], sliderPercent);
+
 
         // This just displays the word music.
         textMesh.text = sliderName;
