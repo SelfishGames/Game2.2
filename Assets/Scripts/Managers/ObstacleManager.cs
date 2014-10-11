@@ -64,11 +64,11 @@ public class ObstacleManager : MonoBehaviour
                 //Gets the offset of the obstacle parent object and the position of the mouse click
                 offset = obstacleParent.position - mouseScreenPos;
             }
-        }
 
-        //If the user is holding the button down, then drag the obstacles
-        if (Input.GetMouseButton(0))
-            DragObstacles();
+            //If the user is holding the button down, then drag the obstacles
+            if (Input.GetMouseButton(0))
+                DragObstacles();
+        }
     }
     #endregion
 
