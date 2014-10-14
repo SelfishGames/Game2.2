@@ -13,6 +13,7 @@ public class ButtonManager : MonoBehaviour
 
     private LoopMusic loopMusic;
     private int click = 0;
+    private bool challengeDown = false; 
     #endregion
 
     #region Awake
@@ -68,6 +69,8 @@ public class ButtonManager : MonoBehaviour
         buttons[4].SetActive(false);
         // Hide option button.
         buttons[3].SetActive(false);
+        // Hide challenge button.
+        buttons[7].SetActive(false);
         // Show Back Button.
         buttons[6].SetActive(true);
         // Reposition quit button.
@@ -81,6 +84,35 @@ public class ButtonManager : MonoBehaviour
         }
 
         gameManager.visibleSlider = true;
+
+        if (click == 1)
+        {
+            RemoveCredits();
+        }
+    }
+    #endregion
+
+    #region Challenge
+    public void Challenge()
+    {
+        // Hide info button.
+        buttons[0].SetActive(false);
+        // Hide play button.
+        buttons[4].SetActive(false);
+        // Hide challenge button.
+        buttons[7].SetActive(false);
+        // Hide option button.
+        buttons[3].SetActive(false);
+        // Show Back Button.
+        buttons[6].SetActive(true);
+        // Reposition quit button.
+        buttons[2].transform.position = buttons[3].transform.position;
+
+        challengeDown = true;
+
+        gameManager.player.gameObject.SetActive(false);
+
+        gameManager.gameTitle.SetActive(false);
 
         if (click == 1)
         {
@@ -110,22 +142,28 @@ public class ButtonManager : MonoBehaviour
         buttons[4].SetActive(true);
         // Show settings.
         buttons[3].SetActive(true);
+        // Show challenge.
+        buttons[7].SetActive(true);
         // Reset quit location.
         buttons[2].transform.position = new Vector2(0.6f, buttons[2].transform.position.y);
         gameManager.gameTitle.SetActive(true);
 
-        for (int i = 0; i < 2; i++)
+        if(!challengeDown)
         {
-            gameManager.audioManager.sliders[i].SetActive(false);
+            for (int i = 0; i < 2; i++)
+            {
+                gameManager.audioManager.sliders[i].SetActive(false);
+            }
+            gameManager.visibleSlider = false;
+
+            //Sets the playerprefs for the volume and slider knob positions
+            //when the options menu is exited
+            PlayerPrefs.SetFloat("Sound", gameManager.audioManager.audioFiles[0].volume);
+            PlayerPrefs.SetFloat("ClickDown", gameManager.audioManager.audioFiles[1].volume);
+            PlayerPrefs.SetFloat("ClickUp", gameManager.audioManager.audioFiles[2].volume);
         }
-        gameManager.visibleSlider = false;
 
-        //Sets the playerprefs for the volume and slider knob positions
-        //when the options menu is exited
-        PlayerPrefs.SetFloat("Sound", gameManager.audioManager.audioFiles[0].volume);
-        PlayerPrefs.SetFloat("ClickDown", gameManager.audioManager.audioFiles[1].volume);
-        PlayerPrefs.SetFloat("ClickUp", gameManager.audioManager.audioFiles[2].volume);
-
+        challengeDown = false;
 
         if (!gameManager.loopMusic)
         {
