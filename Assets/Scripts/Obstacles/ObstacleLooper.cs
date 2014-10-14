@@ -30,7 +30,6 @@ public class ObstacleLooper : MonoBehaviour
             // Take the size of the collider and move it six times 
             // (Current number of obstacles).
             pos.y = Random.Range(minHeight, maxHeight);
-            Debug.Log("Random Y pos: " + pos.y);
             pos.x += widthOfObject * gameManager.obstacles.Count;
 
             gameManager.obstacleManager.liveObstacles[5].transform.localPosition = pos;

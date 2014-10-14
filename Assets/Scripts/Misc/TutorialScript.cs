@@ -22,10 +22,12 @@ public class TutorialScript : MonoBehaviour
     void Update()
     {
         // If we hit the first checkpoint.
-        if (transform.localPosition.x >= targetObstacle.transform.localPosition.x - 2)
+        if (transform.localPosition.x >= targetObstacle.transform.position.x + 6)
         {
             // Pause the player and each particle system.
             StopStartPlayer(0, 0);
+            // Allow the player to move the obstacles.
+            gameManager.isDead = false;
             // Display the first hint message.
 #if UNITY_ANDROID
             hintMessage[0].SetActive(true);
@@ -34,11 +36,10 @@ public class TutorialScript : MonoBehaviour
 #if UNITY_WEBPLAYER
             hintMessage[3].SetActive(true);
 #endif
-            // Allow the player to move the obstacles.
-            gameManager.isDead = false;
+            
 
             // If the obstacle has been moved to the correct position.
-            if (targetObstacle.transform.localPosition.y >= -0.1f && targetObstacle.transform.localPosition.y <= 0.1f)
+            if (targetObstacle.transform.localPosition.y >= 0.8f && targetObstacle.transform.localPosition.y <= 0.9f)
             {
                 // Return movement to player and the particles.
                 StopStartPlayer(3, 1);
@@ -49,12 +50,6 @@ public class TutorialScript : MonoBehaviour
                 hintMessage[3].SetActive(false);
                 hintMessage[1].SetActive(true);
             }
-        }
-
-        if (gameManager.isDead)
-        {
-
-
         }
 
         if (transform.localPosition.x >= 11.65f)

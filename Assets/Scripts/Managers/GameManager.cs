@@ -7,7 +7,7 @@ public class GameManager: MonoBehaviour
     public List<Transform> obstacles = new List<Transform>();
     public GameObject playerExplosion;
     public Transform player;
-    [HideInInspector]
+    //[HideInInspector]
     public bool isDead = false;
     [HideInInspector]
     public bool visibleSlider = false;
