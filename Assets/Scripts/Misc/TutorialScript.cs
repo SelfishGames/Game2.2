@@ -36,7 +36,7 @@ public class TutorialScript : MonoBehaviour
 #if UNITY_WEBPLAYER
             hintMessage[3].SetActive(true);
 #endif
-            
+
 
             // If the obstacle has been moved to the correct position.
             if (targetObstacle.transform.localPosition.y >= 0.8f && targetObstacle.transform.localPosition.y <= 0.9f)

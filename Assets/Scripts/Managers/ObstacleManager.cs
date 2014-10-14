@@ -19,7 +19,7 @@ public class ObstacleManager : MonoBehaviour
     private float dragMinHeight = -2f,
         dragMaxHeight = 2f;
     private int startX;
-    private int[] startRotation = {0,180};
+    private int[] startRotation = { 0, 180 };
     #endregion
 
     #region Awake
@@ -37,12 +37,12 @@ public class ObstacleManager : MonoBehaviour
 
                 liveObstacles.Add(gameManager.obstacleCache.availableObstacles[i]);
                 liveObstacles[i].transform.position = new Vector2(
-                    startX, 
+                    startX,
                     Random.Range(spawnMinHeight, spawnMaxHeight));
-                
+
                 liveObstacles[i].transform.rotation = new Quaternion(
-                    transform.rotation.x, 
-                    startRotation[rand], 
+                    transform.rotation.x,
+                    startRotation[rand],
                     transform.rotation.z,
                     transform.rotation.w);
             }
@@ -64,23 +64,12 @@ public class ObstacleManager : MonoBehaviour
             {
                 //Gets the offset of the obstacle parent object and the position of the mouse click
                 offset = obstacleParent.position - mouseScreenPos;
-                
+
             }
-<<<<<<< HEAD
             if (Input.GetMouseButton(0))
                 DragObstacles();
         }
 
-        //If the user is holding the button down, then drag the obstacles
-        
-            
-=======
-
-            //If the user is holding the button down, then drag the obstacles
-            if (Input.GetMouseButton(0))
-                DragObstacles();
-        }
->>>>>>> origin/master
     }
     #endregion
 
