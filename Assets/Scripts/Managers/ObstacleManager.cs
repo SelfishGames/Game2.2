@@ -66,6 +66,7 @@ public class ObstacleManager : MonoBehaviour
                 offset = obstacleParent.position - mouseScreenPos;
                 
             }
+<<<<<<< HEAD
             if (Input.GetMouseButton(0))
                 DragObstacles();
         }
@@ -73,6 +74,13 @@ public class ObstacleManager : MonoBehaviour
         //If the user is holding the button down, then drag the obstacles
         
             
+=======
+
+            //If the user is holding the button down, then drag the obstacles
+            if (Input.GetMouseButton(0))
+                DragObstacles();
+        }
+>>>>>>> origin/master
     }
     #endregion
 
