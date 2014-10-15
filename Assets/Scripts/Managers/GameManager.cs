@@ -15,6 +15,8 @@ public class GameManager: MonoBehaviour
     public int playCount = 0;
     public GameObject gameTitle;
     public GameObject credits;
+    public GameObject challengeBoard;
+    public GUIText challengeText;
 
     // Objects for each of the manager classes
     public ButtonManager buttonManager;

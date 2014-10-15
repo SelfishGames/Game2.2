@@ -13,13 +13,14 @@ public class ButtonManager : MonoBehaviour
 
     private LoopMusic loopMusic;
     private int click = 0;
-    private bool challengeDown = false; 
+    public bool challengeDown;
     #endregion
 
     #region Awake
     void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
+        challengeDown = true;
     }
     #endregion
 
@@ -75,7 +76,6 @@ public class ButtonManager : MonoBehaviour
         buttons[6].SetActive(true);
         // Reposition quit button.
         buttons[2].transform.position = buttons[3].transform.position;
-
         gameManager.gameTitle.SetActive(false);
 
         for (int i = 0; i < 2; i++)
@@ -84,6 +84,8 @@ public class ButtonManager : MonoBehaviour
         }
 
         gameManager.visibleSlider = true;
+
+        challengeDown = false;
 
         if (click == 1)
         {
@@ -95,24 +97,22 @@ public class ButtonManager : MonoBehaviour
     #region Challenge
     public void Challenge()
     {
-        // Hide info button.
-        buttons[0].SetActive(false);
-        // Hide play button.
-        buttons[4].SetActive(false);
-        // Hide challenge button.
-        buttons[7].SetActive(false);
-        // Hide option button.
-        buttons[3].SetActive(false);
-        // Show Back Button.
-        buttons[6].SetActive(true);
-        // Reposition quit button.
-        buttons[2].transform.position = buttons[3].transform.position;
-
-        challengeDown = true;
-
-        gameManager.player.gameObject.SetActive(false);
-
-        gameManager.gameTitle.SetActive(false);
+        // Toggle info button.
+        buttons[0].SetActive(!buttons[0].activeSelf);
+        // Toggle play button.
+        buttons[4].SetActive(!buttons[4].activeSelf);
+        // Toggle option button.
+        buttons[3].SetActive(!buttons[3].activeSelf);
+        // Toggle quit button.
+        buttons[2].SetActive(!buttons[2].activeSelf);
+        // Toggle challenge board.
+        gameManager.challengeBoard.SetActive(!gameManager.challengeBoard.activeSelf);
+        // Toggle the player object.
+        gameManager.player.gameObject.SetActive(!gameManager.player.gameObject.activeSelf);
+        // Toggle the game title. 
+        gameManager.gameTitle.SetActive(!gameManager.gameTitle.activeSelf);
+        // Toggle challenge text. 
+        gameManager.challengeText.gameObject.SetActive(!gameManager.challengeText.gameObject.activeSelf);
 
         if (click == 1)
         {
@@ -147,23 +147,21 @@ public class ButtonManager : MonoBehaviour
         // Reset quit location.
         buttons[2].transform.position = new Vector2(0.6f, buttons[2].transform.position.y);
         gameManager.gameTitle.SetActive(true);
+        gameManager.player.gameObject.SetActive(true);
 
-        if(!challengeDown)
+
+        for (int i = 0; i < 2; i++)
         {
-            for (int i = 0; i < 2; i++)
-            {
-                gameManager.audioManager.sliders[i].SetActive(false);
-            }
-            gameManager.visibleSlider = false;
-
-            //Sets the playerprefs for the volume and slider knob positions
-            //when the options menu is exited
-            PlayerPrefs.SetFloat("Sound", gameManager.audioManager.audioFiles[0].volume);
-            PlayerPrefs.SetFloat("ClickDown", gameManager.audioManager.audioFiles[1].volume);
-            PlayerPrefs.SetFloat("ClickUp", gameManager.audioManager.audioFiles[2].volume);
+            gameManager.audioManager.sliders[i].SetActive(false);
         }
+        //gameManager.visibleSlider = false;
 
-        challengeDown = false;
+        //Sets the playerprefs for the volume and slider knob positions
+        //when the options menu is exited
+        PlayerPrefs.SetFloat("Sound", gameManager.audioManager.audioFiles[0].volume);
+        PlayerPrefs.SetFloat("ClickDown", gameManager.audioManager.audioFiles[1].volume);
+        PlayerPrefs.SetFloat("ClickUp", gameManager.audioManager.audioFiles[2].volume);
+
 
         if (!gameManager.loopMusic)
         {
