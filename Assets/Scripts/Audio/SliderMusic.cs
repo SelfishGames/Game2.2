@@ -3,8 +3,8 @@ using System.Collections;
 
 public class SliderMusic: MonoBehaviour
 {
-
     #region Fields
+    public GameManager gameManager;
     public Transform knob;
     public TextMesh textMesh;
     public int[] valueRange;
@@ -14,6 +14,8 @@ public class SliderMusic: MonoBehaviour
     private float sliderPercent;
     private float sliderLength;
     private Vector3 targetPos;
+
+    private LoopMusic loopMusic;
 
     #endregion
 
@@ -42,7 +44,6 @@ public class SliderMusic: MonoBehaviour
 
         sliderPercent = Mathf.Clamp01((knob.localPosition.x + sliderLength / 2) / sliderLength);
 
-
         // This just displays the word music.
         textMesh.text = sliderName;
         // The original way we had it changing the numbers based on the sound level
@@ -58,6 +59,22 @@ public class SliderMusic: MonoBehaviour
         targetPos = new Vector3(point.x, targetPos.y, targetPos.z);
     }
     #endregion
+
+    void OnTouchExit()
+    {
+        //Changes the volume of the looping music
+        if (!gameManager.loopMusic)
+        {
+            // Get gameManager in new scene.
+            GameObject gm = GameObject.Find("GameMusic");
+            loopMusic = (LoopMusic)gm.GetComponent(typeof(LoopMusic));
+
+            PlayerPrefs.SetFloat("Music", loopMusic.music.volume);
+        }
+
+        //Saves the position of the knob on the slider
+        PlayerPrefs.SetFloat("musicKnobX", gameManager.audioManager.sliderMusic.knob.position.x);
+    }
 
     #region GetSliderValue
     public float GetSliderValue()

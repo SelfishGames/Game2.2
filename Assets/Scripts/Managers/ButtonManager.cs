@@ -11,7 +11,7 @@ public class ButtonManager : MonoBehaviour
     public bool home = false;
     public bool quit = false;
 
-    private LoopMusic loopMusic;
+    //private LoopMusic loopMusic;
     private int click = 0;
     public bool challengeDown;
     #endregion
@@ -154,26 +154,26 @@ public class ButtonManager : MonoBehaviour
         {
             gameManager.audioManager.sliders[i].SetActive(false);
         }
-        //gameManager.visibleSlider = false;
+        gameManager.visibleSlider = false;
 
-        //Sets the playerprefs for the volume and slider knob positions
-        //when the options menu is exited
-        PlayerPrefs.SetFloat("Sound", gameManager.audioManager.audioFiles[0].volume);
-        PlayerPrefs.SetFloat("ClickDown", gameManager.audioManager.audioFiles[1].volume);
-        PlayerPrefs.SetFloat("ClickUp", gameManager.audioManager.audioFiles[2].volume);
+        ////Sets the playerprefs for the volume and slider knob positions
+        ////when the options menu is exited
+        //PlayerPrefs.SetFloat("Sound", gameManager.audioManager.audioFiles[0].volume);
+        //PlayerPrefs.SetFloat("ClickDown", gameManager.audioManager.audioFiles[1].volume);
+        //PlayerPrefs.SetFloat("ClickUp", gameManager.audioManager.audioFiles[2].volume);
 
 
-        if (!gameManager.loopMusic)
-        {
-            // Get gameManager in new scene.
-            GameObject gm = GameObject.Find("GameMusic");
-            loopMusic = (LoopMusic)gm.GetComponent(typeof(LoopMusic));
+        //if (!gameManager.loopMusic)
+        //{
+        //    // Get gameManager in new scene.
+        //    GameObject gm = GameObject.Find("GameMusic");
+        //    loopMusic = (LoopMusic)gm.GetComponent(typeof(LoopMusic));
 
-            PlayerPrefs.SetFloat("Music", loopMusic.music.volume);
-        }
+        //    PlayerPrefs.SetFloat("Music", loopMusic.music.volume);
+        //}
 
-        PlayerPrefs.SetFloat("musicKnobX", gameManager.audioManager.sliderMusic.knob.position.x);
-        PlayerPrefs.SetFloat("soundKnobX", gameManager.audioManager.sliderSound.knob.position.x);
+        //PlayerPrefs.SetFloat("musicKnobX", gameManager.audioManager.sliderMusic.knob.position.x);
+        //PlayerPrefs.SetFloat("soundKnobX", gameManager.audioManager.sliderSound.knob.position.x);
     }
     #endregion
 

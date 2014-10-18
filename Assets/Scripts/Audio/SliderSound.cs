@@ -5,6 +5,7 @@ public class SliderSound: MonoBehaviour
 {
 
     #region Fields
+    public GameManager gameManager;
     public Transform knob;
     public TextMesh textMesh;
     public int[] valueRange;
@@ -58,6 +59,16 @@ public class SliderSound: MonoBehaviour
         targetPos = new Vector3(point.x, targetPos.y, targetPos.z);
     }
     #endregion
+
+    void OnTouchExit()
+    {
+        //Sets the playerprefs for the soundFX volume and slider knob position
+        PlayerPrefs.SetFloat("Sound", gameManager.audioManager.audioFiles[0].volume);
+        PlayerPrefs.SetFloat("ClickDown", gameManager.audioManager.audioFiles[1].volume);
+        PlayerPrefs.SetFloat("ClickUp", gameManager.audioManager.audioFiles[2].volume);
+
+        PlayerPrefs.SetFloat("soundKnobX", gameManager.audioManager.sliderSound.knob.position.x);
+    }
 
     #region GetSliderValue
     public float GetSliderValue()
