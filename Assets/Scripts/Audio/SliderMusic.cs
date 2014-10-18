@@ -60,7 +60,7 @@ public class SliderMusic: MonoBehaviour
     }
     #endregion
 
-    void OnTouchExit()
+    void OnMouseUp()
     {
         //Changes the volume of the looping music
         if (!gameManager.loopMusic)
@@ -70,10 +70,13 @@ public class SliderMusic: MonoBehaviour
             loopMusic = (LoopMusic)gm.GetComponent(typeof(LoopMusic));
 
             PlayerPrefs.SetFloat("Music", loopMusic.music.volume);
+            //Saves the position of the knob on the slider
+            PlayerPrefs.SetFloat("musicKnobX", gameManager.audioManager.sliderMusic.knob.position.x);
+            PlayerPrefs.SetFloat("SliderPercent",  sliderPercent = Mathf.Clamp01((knob.localPosition.x + sliderLength / 2) / sliderLength));            
+            Debug.Log(loopMusic.music.volume);
         }
 
-        //Saves the position of the knob on the slider
-        PlayerPrefs.SetFloat("musicKnobX", gameManager.audioManager.sliderMusic.knob.position.x);
+        
     }
 
     #region GetSliderValue

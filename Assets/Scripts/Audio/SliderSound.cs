@@ -60,7 +60,7 @@ public class SliderSound: MonoBehaviour
     }
     #endregion
 
-    void OnTouchExit()
+    void OnMouseUp()
     {
         //Sets the playerprefs for the soundFX volume and slider knob position
         PlayerPrefs.SetFloat("Sound", gameManager.audioManager.audioFiles[0].volume);

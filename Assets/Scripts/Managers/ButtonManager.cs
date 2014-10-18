@@ -97,22 +97,36 @@ public class ButtonManager : MonoBehaviour
     #region Challenge
     public void Challenge()
     {
-        // Toggle info button.
-        buttons[0].SetActive(!buttons[0].activeSelf);
-        // Toggle play button.
-        buttons[4].SetActive(!buttons[4].activeSelf);
-        // Toggle option button.
-        buttons[3].SetActive(!buttons[3].activeSelf);
-        // Toggle quit button.
-        buttons[2].SetActive(!buttons[2].activeSelf);
+        // Hide info button.
+        buttons[0].SetActive(false);
+        // Hide play button.
+        buttons[4].SetActive(false);
+        // Hide option button.
+        buttons[3].SetActive(false);
+        // Hide challenge button.
+        buttons[7].SetActive(false);
+        // Show Back Button.
+        buttons[6].SetActive(true);
+        // Reposition quit button.
+        buttons[2].transform.position = buttons[3].transform.position;
+        gameManager.gameTitle.SetActive(false);
+
+        //// Toggle info button.
+        //buttons[0].SetActive(!buttons[0].activeSelf);
+        //// Toggle play button.
+        //buttons[4].SetActive(!buttons[4].activeSelf);
+        //// Toggle option button.
+        //buttons[3].SetActive(!buttons[3].activeSelf);
+        //// Toggle quit button.
+        //buttons[2].SetActive(!buttons[2].activeSelf);
         // Toggle challenge board.
         gameManager.challengeBoard.SetActive(!gameManager.challengeBoard.activeSelf);
         // Toggle the player object.
         gameManager.player.gameObject.SetActive(!gameManager.player.gameObject.activeSelf);
         // Toggle the game title. 
-        gameManager.gameTitle.SetActive(!gameManager.gameTitle.activeSelf);
-        // Toggle challenge text. 
-        gameManager.challengeText.gameObject.SetActive(!gameManager.challengeText.gameObject.activeSelf);
+        gameManager.gameTitle.SetActive(false);
+        //// Toggle challenge text. 
+        //gameManager.challengeText.gameObject.SetActive(!gameManager.challengeText.gameObject.activeSelf);
 
         if (click == 1)
         {
@@ -146,9 +160,13 @@ public class ButtonManager : MonoBehaviour
         buttons[7].SetActive(true);
         // Reset quit location.
         buttons[2].transform.position = new Vector2(0.6f, buttons[2].transform.position.y);
-        gameManager.gameTitle.SetActive(true);
-        gameManager.player.gameObject.SetActive(true);
 
+        // Toggle challenge board.
+        gameManager.challengeBoard.SetActive(false);
+        // Toggle the player object.
+        gameManager.player.gameObject.SetActive(true);
+        // Toggle the game title. 
+        gameManager.gameTitle.SetActive(true);
 
         for (int i = 0; i < 2; i++)
         {
