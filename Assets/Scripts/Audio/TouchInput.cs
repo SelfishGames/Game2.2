@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 public class TouchInput : MonoBehaviour
 {
-
     #region Fields
     public LayerMask touchInputMask;
 
