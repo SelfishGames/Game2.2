@@ -20,43 +20,37 @@ public class ButtonMaster : MonoBehaviour
     #region OnMouseUp
     void OnMouseUp()
     {
-        if(gameObject.name == "Back")
+        // Check which button has been pressed and call
+        // the related function.
+        string name = gameObject.name;
+        switch (name)
         {
-            gameManager.buttonManager.Back();
+            case "Back":
+                gameManager.buttonManager.Back();
+                break;
+            case "Home":
+                gameManager.buttonManager.ButtonHome();
+                break;
+            case "Info":
+                gameManager.buttonManager.Info();
+                break;
+            case "Quit":
+                gameManager.buttonManager.Quit();
+                break;
+            case "Options":
+                gameManager.buttonManager.Options();
+                break;
+            case "Play":
+                StartCoroutine("CallPlay");
+                break;
+            case "Pause":
+                gameManager.buttonManager.Pause();
+                break;
+            case "Challenge":
+                gameManager.buttonManager.Challenge();
+                break;
         }
-        if (gameObject.name == "Home")
-        {
-            gameManager.buttonManager.ButtonHome();
-        }
-        if (gameObject.name == "Info")
-        {
-            gameManager.buttonManager.Info();
-        }
-        if (gameObject.name == "Quit")
-        {
-            gameManager.buttonManager.Quit();
-        }
-        if (gameObject.name == "Options")
-        {
-            gameManager.buttonManager.Options();
-        }
-        if (gameObject.name == "Play")
-        {
-            StartCoroutine("CallPlay");
-        }
-        if (gameObject.name == "Options")
-        {
-            gameManager.buttonManager.Options();
-        }
-        if (gameObject.name == "Pause")
-        {
-            gameManager.buttonManager.Pause();
-        }
-        if (gameObject.name == "Challenge")
-        {
-            gameManager.buttonManager.Challenge();
-        }
-       
+
         gameManager.audioManager.audioFiles[2].Play();
         guiTexture.texture = defaultTexture;
     }
