@@ -90,6 +90,10 @@ public class PlayerManager: MonoBehaviour
         gameManager.buttonManager.buttons[7].SetActive(true);
         // Make GameManager know the player is dead.
         gameManager.isDead = true;
+        gameManager.collided = true;
+        gameManager.touchCount = 0;
+        gameManager.activeAd = true;
+
         if (Application.loadedLevelName == "Level1")
         {
             gameManager.pointsManager.playerScoreEnd.gameObject.SetActive(true);

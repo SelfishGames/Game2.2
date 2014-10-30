@@ -12,8 +12,8 @@ public class ObstacleManager : MonoBehaviour
     private Transform selected;
     private Vector3 offset;
     private Vector3 mouseScreenPos;
-    private float minHeight = -2f,
-        maxHeight = 2f;
+    //private float minHeight = -2f,
+        //maxHeight = 2f;
     private float spawnMinHeight = -1f,
         spawnMaxHeight = 1f;
     private float dragMinHeight = -2f,

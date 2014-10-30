@@ -7,12 +7,17 @@ public class GameManager: MonoBehaviour
     public List<Transform> obstacles = new List<Transform>();
     public GameObject playerExplosion;
     public Transform player;
+    public bool collided = false;
     //[HideInInspector]
     public bool isDead = false;
     [HideInInspector]
     public bool visibleSlider = false;
-    [HideInInspector]
+    //[HideInInspector]
     public int playCount = 0;
+    //[HideInInspector]
+    public int touchCount = 0;
+    //[HideInInspector]
+    public bool activeAd = false;
     public GameObject gameTitle;
     public GameObject credits;
     public GameObject challengeBoard;

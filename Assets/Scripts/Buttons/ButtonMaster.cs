@@ -46,9 +46,9 @@ public class ButtonMaster : MonoBehaviour
             case "Pause":
                 gameManager.buttonManager.Pause();
                 break;
-            case "Challenge":
-                gameManager.buttonManager.Challenge();
-                break;
+            //case "Challenge":
+            //    gameManager.buttonManager.Challenge();
+            //    break;
         }
 
         gameManager.audioManager.audioFiles[2].Play();

@@ -9,11 +9,7 @@ public class ButtonAnywhere : MonoBehaviour
 
     void Update()
     {
-        if (gameManager.isDead)
-        {
-
-
-        }
+       
     }
 
     #region OnMouseDown
