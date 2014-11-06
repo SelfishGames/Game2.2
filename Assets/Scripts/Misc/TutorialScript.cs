@@ -62,7 +62,7 @@ public class TutorialScript : MonoBehaviour
 #if UNITY_WEBPLAYER
             hintMessage[4].SetActive(true);
 #endif
-            gameManager.playCount = 1;
+            gameManager.playCount++;
         }
     }
     #endregion

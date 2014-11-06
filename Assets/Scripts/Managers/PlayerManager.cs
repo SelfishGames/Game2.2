@@ -93,6 +93,7 @@ public class PlayerManager: MonoBehaviour
         gameManager.collided = true;
         gameManager.touchCount = 0;
         gameManager.activeAd = true;
+        gameManager.playCount++; 
 
         if (Application.loadedLevelName == "Level1")
         {

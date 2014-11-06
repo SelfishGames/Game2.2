@@ -22,16 +22,20 @@ public class ChartboostPersistentObject : MonoBehaviour
 
     void Update()
     {
-        // If player is dead & they have player the tutorial & they have not yet
-        // touched the screen (This was to stop multiple ads), then show ad.
-        if(gm.collided && Application.loadedLevelName != "Tutorial" && gm.touchCount == 0)
+        // Only show the ad every 4 plays.
+        if (gm.playCount % 3 == 0)
         {
-            Debug.Log("shown");
-            Chartboost.didDismissInterstitial += didDismissInterstitial;
-            Chartboost.showInterstitial(CBLocation.Default);
-            // Now increase touchCount to stop any further ads showing.
-            gm.touchCount++;
-        }        
+            // If player is dead & they have player the tutorial & they have not yet
+            // touched the screen (This was to stop multiple ads), then show ad.
+            if (gm.collided && Application.loadedLevelName != "Tutorial" && gm.touchCount == 0)
+            {
+                Debug.Log("shown");
+                Chartboost.didDismissInterstitial += didDismissInterstitial;
+                Chartboost.showInterstitial(CBLocation.Default);
+                // Now increase touchCount to stop any further ads showing.
+                gm.touchCount++;
+            } 
+        }
     }
 
     // My understanding was that this would return that the interstitial has been dismissed.

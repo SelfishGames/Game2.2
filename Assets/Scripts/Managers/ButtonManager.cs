@@ -49,7 +49,7 @@ public class ButtonManager : MonoBehaviour
     #region Play
     public void Play(int level)
     {
-        if(Application.loadedLevelName == "Tutorial")
+        if(Application.loadedLevelName == "Tutorial" || gameManager.playCount % 3 != 0)
         {
             Application.LoadLevel(level);
         }

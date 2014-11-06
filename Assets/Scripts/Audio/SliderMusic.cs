@@ -73,7 +73,6 @@ public class SliderMusic: MonoBehaviour
             //Saves the position of the knob on the slider
             PlayerPrefs.SetFloat("musicKnobX", gameManager.audioManager.sliderMusic.knob.position.x);
             PlayerPrefs.SetFloat("SliderPercent",  sliderPercent = Mathf.Clamp01((knob.localPosition.x + sliderLength / 2) / sliderLength));            
-            Debug.Log(loopMusic.music.volume);
         }
 
         

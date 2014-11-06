@@ -13,9 +13,9 @@ public class GameManager: MonoBehaviour
     [HideInInspector]
     public bool visibleSlider = false;
     //[HideInInspector]
-    public int playCount = 0;
+    public int playCount;
     //[HideInInspector]
-    public int touchCount = 0;
+    public int touchCount;
     //[HideInInspector]
     public bool activeAd = false;
     public GameObject gameTitle;
@@ -33,14 +33,14 @@ public class GameManager: MonoBehaviour
     public ObstacleCache obstacleCache;
     public LoopMusic loopMusic;
     public CreditManager creditManager;
-
-
     #endregion
 
     #region Start
     void Start()
     {
         //PlayerPrefs.DeleteAll();
+        playCount = 0;
+        touchCount = 0;
         playCount = PlayerPrefs.GetInt("playCount", 0);
     }
     #endregion
