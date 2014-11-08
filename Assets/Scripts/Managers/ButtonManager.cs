@@ -56,9 +56,11 @@ public class ButtonManager : MonoBehaviour
 
         else
         {
+            Application.LoadLevel(level);
+
             if (gameManager.activeAd == false)
             {
-                Application.LoadLevel(level);
+                //Application.LoadLevel(level);
             }           
         }
     }

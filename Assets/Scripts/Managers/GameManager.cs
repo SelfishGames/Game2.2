@@ -22,6 +22,7 @@ public class GameManager: MonoBehaviour
     public GameObject credits;
     public GameObject challengeBoard;
     public GUIText challengeText;
+    public GUIText menuHighscore;
 
     // Objects for each of the manager classes
     public ButtonManager buttonManager;
@@ -42,6 +43,8 @@ public class GameManager: MonoBehaviour
     {
         //PlayerPrefs.DeleteAll();
         playCount = PlayerPrefs.GetInt("playCount", 0);
+
+        menuHighscore.text = "Highscore: " + PlayerPrefs.GetInt("highScore");
     }
     #endregion
 
