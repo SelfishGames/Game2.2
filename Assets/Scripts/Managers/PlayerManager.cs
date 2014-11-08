@@ -7,6 +7,10 @@ public class PlayerManager: MonoBehaviour
     public GameManager gameManager;
     public float speed = 3f;
 
+    // Make private after testing.
+    public float intensity, time;
+    public bool decrease;
+
     // Local variable.
     private GameObject playerObject;
 
@@ -19,13 +23,14 @@ public class PlayerManager: MonoBehaviour
     //rotSpeed is how fast it rotates
     private float rotSpeed = 0.8f;
 
-    private bool recentNearMiss;
+    private bool recentNearMiss,
+        recentPillarPassed;
     private GameObject newObstacle,
         oldObstacle;
-    
-    // Make private after testing.
-    public float intensity, time;
-    public bool decrease;
+
+    private int pillarsPassedTotal,
+        pillarsPassedRound,
+        pillarsPassedHighScore;
     #endregion
 
     #region Start
@@ -33,6 +38,9 @@ public class PlayerManager: MonoBehaviour
     {
         playerObject = gameObject;
         recentNearMiss = false;
+
+        pillarsPassedTotal = PlayerPrefs.GetInt("pillarsPassedTotal");
+        pillarsPassedHighScore = PlayerPrefs.GetInt("pillarsPassedHighScore");
     }
     #endregion
 
@@ -96,6 +104,19 @@ public class PlayerManager: MonoBehaviour
 
         if (Application.loadedLevelName == "Level1")
         {
+            //////////////////////////
+            //Pillar statistics
+            if (pillarsPassedRound >= pillarsPassedHighScore)
+                pillarsPassedHighScore = pillarsPassedRound;
+
+            pillarsPassedTotal += pillarsPassedRound;
+
+            //Stores highest number of pillars passed in 1 round
+            PlayerPrefs.SetInt("pillarsPassedHighScore", pillarsPassedHighScore);
+            //Stores the total number of pillars passed
+            PlayerPrefs.SetInt("pillarsPassedTotal", pillarsPassedTotal);
+            /////////////////////////
+
             gameManager.pointsManager.playerScoreEnd.gameObject.SetActive(true);
             gameManager.pointsManager.highScoreEnd.gameObject.SetActive(true);
             gameManager.pointsManager.highScoreDisplay.SetActive(true);
@@ -117,6 +138,7 @@ public class PlayerManager: MonoBehaviour
         if(col.gameObject.layer == LayerMask.NameToLayer("Obs"))
         {
             recentNearMiss = false;
+            recentPillarPassed = false;
         }
     }
     #endregion
@@ -134,6 +156,18 @@ public class PlayerManager: MonoBehaviour
 
                 //Applies the bonus points after passing the obstacle
                 gameManager.pointsManager.NearMissBonus();
+            }
+        }
+
+        //Checks if the player passed by an obstacle
+        if(col.gameObject.tag == "Obstacle")
+        {
+            if (!recentPillarPassed)
+            {
+                recentPillarPassed = true;
+
+                pillarsPassedRound++;
+                Debug.Log("Pillar passed");
             }
         }
     }

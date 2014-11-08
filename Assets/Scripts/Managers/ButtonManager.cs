@@ -11,6 +11,8 @@ public class ButtonManager : MonoBehaviour
     public bool home = false;
     public bool quit = false;
 
+    public GameObject infoObject;
+
     //private LoopMusic loopMusic;
     private int click = 0;
     public bool challengeDown;
@@ -211,6 +213,26 @@ public class ButtonManager : MonoBehaviour
     #region Info
     public void Info()
     {
+        gameManager.gameTitle.SetActive(false);
+
+        infoObject.SetActive(true);
+
+        //Highscore
+        infoObject.transform.GetChild(0).guiText.text = 
+            "HighScore : " + PlayerPrefs.GetInt("highScore");
+        //Total pillars
+        infoObject.transform.GetChild(1).guiText.text = 
+            "Total # of pillars passed\nover lifetime : " + PlayerPrefs.GetInt("pillarsPassedTotal");
+        //Pillars in a round
+        infoObject.transform.GetChild(2).guiText.text =
+            "Highest # of pillars passed\nin a round : " + PlayerPrefs.GetInt("pillarsPassedHighScore");
+        //Total near misses
+        infoObject.transform.GetChild(3).guiText.text = 
+            "Total # of near-misses\nover lifetime : " + PlayerPrefs.GetInt("nearmissTotal");
+        //Near misses in a round
+        infoObject.transform.GetChild(4).guiText.text = 
+            "Highest # of near-misses\nin a round : " + PlayerPrefs.GetInt("nearmissHighScore");
+
         if (click == 0)
         {
             click++;
@@ -219,6 +241,10 @@ public class ButtonManager : MonoBehaviour
 
         else if (click == 1)
         {
+            gameManager.gameTitle.SetActive(true);
+
+            infoObject.SetActive(false);
+
             RemoveCredits();
         }
     }
