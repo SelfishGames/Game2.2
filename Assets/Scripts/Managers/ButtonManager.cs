@@ -232,6 +232,9 @@ public class ButtonManager : MonoBehaviour
         //Near misses in a round
         infoObject.transform.GetChild(4).guiText.text = 
             "Highest # of near-misses\nin a round : " + PlayerPrefs.GetInt("nearmissHighScore");
+        //Games Played
+        infoObject.transform.GetChild(5).guiText.text =
+            "# of games played : " + PlayerPrefs.GetInt("gamesPlayedTotal");
 
         if (click == 0)
         {

@@ -30,7 +30,8 @@ public class PlayerManager: MonoBehaviour
 
     private int pillarsPassedTotal,
         pillarsPassedRound,
-        pillarsPassedHighScore;
+        pillarsPassedHighScore,
+        gamesPlayedTotal;
     #endregion
 
     #region Start
@@ -41,6 +42,8 @@ public class PlayerManager: MonoBehaviour
 
         pillarsPassedTotal = PlayerPrefs.GetInt("pillarsPassedTotal");
         pillarsPassedHighScore = PlayerPrefs.GetInt("pillarsPassedHighScore");
+
+        gamesPlayedTotal = PlayerPrefs.GetInt("gamesPlayedTotal");
     }
     #endregion
 
@@ -116,6 +119,10 @@ public class PlayerManager: MonoBehaviour
             //Stores the total number of pillars passed
             PlayerPrefs.SetInt("pillarsPassedTotal", pillarsPassedTotal);
             /////////////////////////
+
+            gamesPlayedTotal++;
+
+            PlayerPrefs.SetInt("gamesPlayedTotal", gamesPlayedTotal);
 
             gameManager.pointsManager.playerScoreEnd.gameObject.SetActive(true);
             gameManager.pointsManager.highScoreEnd.gameObject.SetActive(true);
