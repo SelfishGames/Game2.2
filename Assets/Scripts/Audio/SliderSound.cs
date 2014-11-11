@@ -3,7 +3,6 @@ using System.Collections;
 
 public class SliderSound: MonoBehaviour
 {
-
     #region Fields
     public GameManager gameManager;
     public Transform knob;

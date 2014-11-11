@@ -12,7 +12,7 @@ public class CreditManager : MonoBehaviour
     void Start ()
     {
     	// Set the start point of the credits.
-    	startPos = new Vector2(0.6f, -0.12f);
+    	startPos = new Vector2(0.54f, -0.44f);
     	transform.position = startPos;
     }
 
@@ -23,10 +23,9 @@ public class CreditManager : MonoBehaviour
     	transform.position += transform.right * -speed * Time.deltaTime;
     	// If it reached the edge of the screen return the credits to the start point
     	// to allow them to scroll back across.
-    	if(transform.position.x < -1.0f)
+    	if(transform.position.x < -1.7f)
     	{
     		transform.position = startPos;
-
     	}
     }
 

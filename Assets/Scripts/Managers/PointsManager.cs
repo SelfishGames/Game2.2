@@ -14,8 +14,11 @@ public class PointsManager : MonoBehaviour
     public GameManager gameManager;
     public GameObject highScoreDisplay;
 
-    private int playerScore;
-    private int highScore;
+    private int playerScore,
+        highScore;
+    private int nearmissTotal,
+        nearmissRound,
+        nearmissHighScore;
     private float timer;
     private Color nearMissColour;
     private Vector3 offset = new Vector3(0, 1.5f, 0);
@@ -26,6 +29,10 @@ public class PointsManager : MonoBehaviour
     {
         // Get High Score.
         highScore = PlayerPrefs.GetInt("highScore", 0);
+        //Get nearmiss High Score
+        nearmissHighScore = PlayerPrefs.GetInt("nearmissHighScore");
+        //Get nearmiss total
+        nearmissTotal = PlayerPrefs.GetInt("nearmissTotal");
 
         //Saves the colour values to reassign at runtime
         nearMissColour = nearMissTexts[0].transform.GetChild(0).guiText.color;
@@ -35,8 +42,19 @@ public class PointsManager : MonoBehaviour
     #region OnDestroy
     void OnDestroy()
     {
-        // Store HighScore.
+        //Checks if the No. of near misses is higher than the current highest
+        if (nearmissRound >= nearmissHighScore)
+            nearmissHighScore = nearmissRound;
+
+        //Adds the No. of near misses to the total tally of near misses
+        nearmissTotal += nearmissRound;
+
+        //Store HighScore.
         PlayerPrefs.SetInt("highScore", highScore);
+        //Store no. of most near misses in 1 round
+        PlayerPrefs.SetInt("nearmissHighScore", nearmissHighScore);
+        //Stores total no. of near misses gained
+        PlayerPrefs.SetInt("nearmissTotal", nearmissTotal);
     }
     #endregion
 
@@ -54,11 +72,9 @@ public class PointsManager : MonoBehaviour
                 timer = 0;
             }
 
-            // Update the high score.
+            //Checks if the score is higher than the current highscore
             if (playerScore >= highScore)
-            {
                 highScore = playerScore;
-            }
 
             //Sets the score display text
             GUIScore.text = ("Score: " + playerScore.ToString());
@@ -119,6 +135,7 @@ public class PointsManager : MonoBehaviour
                 //Resets the colour and sets it active
                 nearMissTexts[i].transform.GetChild(0).guiText.color = nearMissColour;
                 nearMissTexts[i].gameObject.SetActive(true);
+                nearmissRound++;
                 break;
             }
         }
