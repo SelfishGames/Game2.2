@@ -23,6 +23,8 @@ public class GameManager: MonoBehaviour
     public GameObject challengeBoard;
     public GUIText challengeText;
 
+    public int totalGamesPlayed;
+
     // Objects for each of the manager classes
     public ButtonManager buttonManager;
     public PlayerManager playerManager;
@@ -42,6 +44,8 @@ public class GameManager: MonoBehaviour
         playCount = 0;
         touchCount = 0;
         playCount = PlayerPrefs.GetInt("playCount", 0);
+
+        totalGamesPlayed = PlayerPrefs.GetInt("totalGamesPlayed");
     }
     #endregion
 
@@ -77,6 +81,9 @@ public class GameManager: MonoBehaviour
     void OnDestroy()
     {
         PlayerPrefs.SetInt("playCount", playCount);
+
+        totalGamesPlayed++;
+        PlayerPrefs.SetInt("totalGamesPlayed", totalGamesPlayed);
     }
     #endregion
 }

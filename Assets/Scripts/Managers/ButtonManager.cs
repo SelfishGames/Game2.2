@@ -215,23 +215,26 @@ public class ButtonManager : MonoBehaviour
     {
         gameManager.gameTitle.SetActive(false);
 
-        //infoObject.SetActive(true);
+        infoObject.SetActive(true);
 
-        ////Highscore
-        //infoObject.transform.GetChild(0).guiText.text = 
-        //    "HighScore : " + PlayerPrefs.GetInt("highScore");
-        ////Total pillars
-        //infoObject.transform.GetChild(1).guiText.text = 
-        //    "Total # of pillars passed\nover lifetime : " + PlayerPrefs.GetInt("pillarsPassedTotal");
-        ////Pillars in a round
-        //infoObject.transform.GetChild(2).guiText.text =
-        //    "Highest # of pillars passed\nin a round : " + PlayerPrefs.GetInt("pillarsPassedHighScore");
-        ////Total near misses
-        //infoObject.transform.GetChild(3).guiText.text = 
-        //    "Total # of near-misses\nover lifetime : " + PlayerPrefs.GetInt("nearmissTotal");
-        ////Near misses in a round
-        //infoObject.transform.GetChild(4).guiText.text = 
-        //    "Highest # of near-misses\nin a round : " + PlayerPrefs.GetInt("nearmissHighScore");
+        //Highscore
+        infoObject.transform.GetChild(0).guiText.text =
+            "HighScore : " + PlayerPrefs.GetInt("highScore");
+        //Total pillars
+        infoObject.transform.GetChild(1).guiText.text =
+            "Total # of pillars passed\nover lifetime : " + PlayerPrefs.GetInt("pillarsPassedTotal");
+        //Pillars in a round
+        infoObject.transform.GetChild(2).guiText.text =
+            "Highest # of pillars passed\nin a round : " + PlayerPrefs.GetInt("pillarsPassedHighScore");
+        //Total near misses
+        infoObject.transform.GetChild(3).guiText.text =
+            "Total # of near-misses\nover lifetime : " + PlayerPrefs.GetInt("nearmissTotal");
+        //Near misses in a round
+        infoObject.transform.GetChild(4).guiText.text =
+            "Highest # of near-misses\nin a round : " + PlayerPrefs.GetInt("nearmissHighScore");
+        //Number of games played
+        infoObject.transform.GetChild(5).guiText.text =
+            "# of games played : " + PlayerPrefs.GetInt("totalGamesPlayed");
 
         if (click == 0)
         {
@@ -243,7 +246,7 @@ public class ButtonManager : MonoBehaviour
         {
             gameManager.gameTitle.SetActive(true);
 
-            //infoObject.SetActive(false);
+            infoObject.SetActive(false);
 
             RemoveCredits();
         }
